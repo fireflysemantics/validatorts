@@ -12,7 +12,7 @@ After building your library with `ng build validatorjs`, go to the dist folder `
 
 ## Running unit tests
 
-Run `ng test validatorjs` to execute the unit tests via [Jest](https://jestjs.io/).
+Run `npm t` to execute the unit tests via [Jest](https://jestjs.io/).
 
 ## Further help
 
