@@ -6,8 +6,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng build validatorjs`
 
-
-
 ## Running unit tests
 
 Run the Jest Tests for ValidatorTS
