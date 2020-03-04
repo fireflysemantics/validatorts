@@ -2,11 +2,6 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
-## Code scaffolding
-
-Run `ng generate component component-name --project validatorjs` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project validatorjs`.
-> Note: Don't forget to add `--project validatorjs` or else it will be added to the default project in your `angular.json` file. 
-
 ## Build
 
 Run `ng build validatorjs` to build the project. The build artifacts will be stored in the `dist/` directory.
@@ -17,7 +12,7 @@ After building your library with `ng build validatorjs`, go to the dist folder `
 
 ## Running unit tests
 
-Run `ng test validatorjs` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test validatorjs` to execute the unit tests via [Jest](https://jestjs.io/).
 
 ## Further help
 
