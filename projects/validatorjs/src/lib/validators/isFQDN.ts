@@ -1,7 +1,16 @@
 import { assertString } from '../util/assertString';
 import { merge } from '../util/merge';
 
-const default_fqdn_options = {
+/**
+ *  IsFQDN Options
+ */
+export interface IsFQDNOptions {
+  require_tld?: boolean;
+  allow_underscores?: boolean;
+  allow_trailing_dot?: boolean;
+}
+
+const default_fqdn_options:IsFQDNOptions = {
   require_tld: true,
   allow_underscores: false,
   allow_trailing_dot: false,

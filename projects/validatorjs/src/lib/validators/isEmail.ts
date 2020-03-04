@@ -5,12 +5,22 @@ import { isByteLength } from './isByteLength';
 import { isFQDN } from './isFQDN';
 import { isIP } from './isIP';
 
-const default_email_options = {
-  allow_display_name: false,
+/**
+ * IsEmail Options.
+ */
+export interface IsEmailOptions {
+  require_display_name?:boolean
+  allow_display_name?: boolean
+  allow_utf8_local_part?: boolean
+  require_tld?: boolean
+}
+
+export const default_email_options:IsEmailOptions = {
   require_display_name: false,
+  allow_display_name: false,
   allow_utf8_local_part: true,
   require_tld: true,
-};
+}
 
 /* eslint-disable max-len */
 /* eslint-disable no-control-regex */

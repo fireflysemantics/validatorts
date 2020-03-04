@@ -15,8 +15,23 @@ allow_protocol_relative_urls - if set as true protocol relative URLs will be all
 
 */
 
+/**
+ * IsURL Options.
+ */
+export interface IsURLOptions {
+  protocols?: string[]
+  require_tld?: boolean
+  require_protocol?: boolean
+  require_host?: boolean
+  require_valid_protocol?: boolean
+  allow_underscores?: boolean
+  host_whitelist?: false | string[]
+  host_blacklist?: false | string[]
+  allow_trailing_dot?: boolean
+  allow_protocol_relative_urls?: boolean
+}
 
-const default_url_options = {
+const default_url_options:IsURLOptions = {
   protocols: ['http', 'https', 'ftp'],
   require_tld: true,
   require_protocol: false,
@@ -25,7 +40,7 @@ const default_url_options = {
   allow_underscores: false,
   allow_trailing_dot: false,
   allow_protocol_relative_urls: false,
-};
+}
 
 const wrapped_ipv6 = /^\[([^\]]+)\](?::([0-9]+))?$/;
 
