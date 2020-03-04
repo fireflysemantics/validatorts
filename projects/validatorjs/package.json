@@ -1,7 +1,7 @@
 {
   "name": "@fireflysemantics/validatorts",
   "description": "String validation and sanitization",
-  "version": "12.2.0",
+  "version": "12.2.3",
   "homepage": "https://github.com/fireflysemantics/validatorts",
   "scripts": {
     "test": "jest",
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chriso/validator.js.git"
+    "url": "https://github.com/fireflysemantics/validatorts"
   },
   "license": "MIT",
   "comments": {
