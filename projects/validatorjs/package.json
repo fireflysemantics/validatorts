@@ -1,13 +1,12 @@
 {
   "name": "@fireflysemantics/validatorts",
   "description": "String validation and sanitization",
-  "version": "12.2.6",
+  "version": "12.2.9",
   "homepage": "https://github.com/fireflysemantics/validatorts",
   "scripts": {
     "test": "jest",
     "doc": "typedoc --out doc ./src/",
-    "update": "bump patch && ncu -u && npm i",
-    "dist": "bump patch && ncu -u && npm i && npm run compile"
+    "update": "bump patch && ncu -u && npm i"
   },
   "devDependencies": {
     "@types/jest": "^25.1.3",

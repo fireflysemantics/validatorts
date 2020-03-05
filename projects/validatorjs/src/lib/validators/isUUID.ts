@@ -14,7 +14,8 @@ const uuid = {
  * @param version The version
  * @return true if the `target` is  a valid UUID, false otherwise
  */
-export function isUUID(str, version = 'all') {
+export function isUUID(str, version?) {
+  version = version ? version : 'all'
   assertString(str);
   const pattern = uuid[version];
   return pattern && pattern.test(str);
