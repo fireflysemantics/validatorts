@@ -4,7 +4,7 @@ node_js:
   - "stable"
 script:
   - npm t
-  - npm run doc
+  - npm run doc-validatorts
 deploy:
   provider: pages
   skip_cleanup: true
