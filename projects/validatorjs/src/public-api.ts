@@ -75,6 +75,7 @@ export * from './lib/validators/isURL'
 export * from './lib/validators/isUUID'
 export * from './lib/validators/isVariableWidth'
 export * from './lib/validators/isWhitelisted'
+export * from './lib/validators/matches'
 
 //========================================
 // Sanitizers
