@@ -3,38 +3,38 @@
   "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "validatorjs": {
+    "validatorts": {
       "projectType": "library",
-      "root": "projects/validatorjs",
-      "sourceRoot": "projects/validatorjs/src",
+      "root": "projects/validatorts",
+      "sourceRoot": "projects/validatorts/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/validatorjs/tsconfig.lib.json",
-            "project": "projects/validatorjs/ng-package.json"
+            "tsConfig": "projects/validatorts/tsconfig.lib.json",
+            "project": "projects/validatorts/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/validatorjs/tsconfig.lib.prod.json"
+              "tsConfig": "projects/validatorts/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/validatorjs/src/test.ts",
-            "tsConfig": "projects/validatorjs/tsconfig.spec.json",
-            "karmaConfig": "projects/validatorjs/karma.conf.js"
+            "main": "projects/validatorts/src/test.ts",
+            "tsConfig": "projects/validatorts/tsconfig.spec.json",
+            "karmaConfig": "projects/validatorts/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/validatorjs/tsconfig.lib.json",
-              "projects/validatorjs/tsconfig.spec.json"
+              "projects/validatorts/tsconfig.lib.json",
+              "projects/validatorts/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -43,5 +43,5 @@
         }
       }
     }},
-  "defaultProject": "validatorjs"
+  "defaultProject": "validatorts"
 }

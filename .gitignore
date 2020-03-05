@@ -8,10 +8,10 @@
 # Only exists if Bazel was run
 /bazel-out
 
-# dependencies
+# Validator TS Library 
 /node_modules
-/projects/validatorjs/node_modules
-/projects/validatorjs/doc
+/projects/validatorts/node_modules
+/projects/validatorts/doc
 
 # profiling files
 chrome-profiler-events*.json
