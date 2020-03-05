@@ -42,7 +42,7 @@ const isValidDate = (str) => {
  * @param options The options
  * @return true if the `target` is a valid ISO8601 date, false otherwise
  */
-export function isISO8601(str, options) {
+export function isISO8601(str, options?) {
   assertString(str);
   const check = iso8601.test(str);
   if (!options) return check;
