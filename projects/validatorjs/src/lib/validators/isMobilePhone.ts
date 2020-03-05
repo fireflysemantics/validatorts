@@ -98,15 +98,28 @@ phones['fr-BE'] = phones['nl-BE'];
 phones['zh-HK'] = phones['en-HK'];
 phones['zh-MO'] = phones['en-MO'];
 
+
+/**
+ * Optional configuration 
+ * If `strictMode` is set to true, 
+ * the mobile phone number must be supplied 
+ * with the country code and therefore must start with +. 
+ * The supported localelist is exported via isMobilePhoneLocales.
+ */
+export interface IsMobilePhoneOptions {
+  strictMode:boolean
+}
+
 /**
  * Checks whether the `target` string is a valid Mobile Phone Number
  * 
  * @param target The target string
  * @param locale The locale
  * @param options The options
+ * @throws Error If the local passed in is not supported.
  * @return true if the `target` is a valid Mobile Phone Number, false otherwise
  */
-export function isMobilePhone(target:string, locale:string, options) {
+export function isMobilePhone(target:string, locale:string, options?:IsMobilePhoneOptions) {
   assertString(target);
   if (options && options.strictMode && !target.startsWith('+')) {
     return false;
@@ -141,4 +154,7 @@ export function isMobilePhone(target:string, locale:string, options) {
   throw new Error(`Invalid locale '${locale}'`);
 }
 
+/**
+ * The supported locale list.
+ */
 export const isMobilePhoneLocales = Object.keys(phones);
