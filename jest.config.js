@@ -1,6 +1,6 @@
 module.exports = {
   "roots": [
-    "<rootDir>/projects/validatorjs/src/lib"
+    "<rootDir>/projects/validatorts/src/lib"
   ],
   testMatch: [
     "**/__tests__/**/*.+(ts|tsx|js)",
