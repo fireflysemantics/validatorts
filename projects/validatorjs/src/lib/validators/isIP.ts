@@ -35,10 +35,10 @@ const ipv6Block = /^[0-9A-F]{1,4}$/i;
  * Checks whether the `target` string is an int
  * 
  * @param target The target string
- * @param options The options
+ * @param version The version
  * @return true if the `target` is an int, false otherwise
  */
-export function isIP(str: string, version: string = '') {
+export function isIP(str: string, version: string = '4') {
   assertString(str);
   version = String(version);
   if (!version) {
