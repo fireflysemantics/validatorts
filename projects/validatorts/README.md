@@ -9,6 +9,7 @@ npm i -S @fireflysemantics/validatorts
 # Use
 
 ```
+import { isPort } from '@fireflysemantics/validatorts'
 const isPortNumber:boolean = isPort('4200')
 console.log(isPortNumber)
 ```
