@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "test:watch": "jest --watch",
     "build-validatorjs": "ng build validatorjs",
-    "doc-validatorts": "typedoc --out doc ./projects/validatorjs/src/"
+    "doc-validatorts": "typedoc --out doc ./projects/validatorts/src/"
   },
   "private": true,
   "dependencies": {
