@@ -4,7 +4,7 @@ node_js:
   - "stable"
 script:
   - npm t
-  - npm run dvts
+  - npm run d
 deploy:
   provider: pages
   skip_cleanup: true
