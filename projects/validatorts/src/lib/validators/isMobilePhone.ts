@@ -1,7 +1,14 @@
 import { assertString } from '../util/assertString'
 
 /**
- * Mobile Phone Local Type
+ * Mobile Phone Local Type.
+ * 
+ * TODO: 
+ * We added 
+ * 'en-CA'
+ * 'fr-BE'
+ * 'zh-HK'
+ * And these don't have regex support yet.
  */
 export type MobilePhoneLocale =
 | 'am-AM'
