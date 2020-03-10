@@ -19,9 +19,9 @@
       "dom"
     ],
     "paths": {
-      "validatorjs": [
-        "dist/validatorjs/validatorjs",
-        "dist/validatorjs"
+      "validatorts": [
+        "dist/validatorts/validatorts",
+        "dist/validatorts"
       ]
     }
   },

@@ -1,7 +1,7 @@
 {
   "name": "@fireflysemantics/validatorts",
   "description": "String validation and sanitization",
-  "version": "12.2.21",
+  "version": "12.2.28",
   "homepage": "https://github.com/fireflysemantics/validatorts",
   "scripts": {
     "test": "jest",

@@ -10,6 +10,7 @@
     "e2e": "ng e2e",
     "test:watch": "jest --watch",
     "b": "ng build validatorts",
+    "p": "cd projects/validatorts && bump patch && cd ../.. && npm run b && cd dist/validatorts && npm publish",
     "d": "typedoc --out doc --exclude **/*.spec.ts ./projects/validatorts/src/"
   },
   "private": true,
