@@ -1,7 +1,7 @@
 {
   "name": "@fireflysemantics/validatorts",
   "description": "String validation and sanitization",
-  "version": "12.2.19",
+  "version": "12.2.21",
   "homepage": "https://github.com/fireflysemantics/validatorts",
   "scripts": {
     "test": "jest",
@@ -35,7 +35,8 @@
   "comments": {
     "global dependencies": {
       "@jsdevtools/version-bump-prompt global install": "npm install -g @jsdevtools/version-bump-prompt",
-      "npm-check-updates": "npm install -g npm-check-updates"
+      "npm-check-updates": "npm install -g npm-check-updates",
+      "npm-install-peers": "npm install -g npm-install-peers"
     },
     "validatorjs bugs": {
       "url": "https://github.com/chriso/validator.js/issues"
