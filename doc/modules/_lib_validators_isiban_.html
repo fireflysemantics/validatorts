@@ -1,0 +1,1058 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>&quot;lib/validators/isIBAN&quot; | @fireflysemantics/validatorts</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">@fireflysemantics/validatorts</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_lib_validators_isiban_.html">&quot;lib/validators/isIBAN&quot;</a>
+				</li>
+			</ul>
+			<h1>External module &quot;lib/validators/isIBAN&quot;</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_lib_validators_isiban_.html#hasvalidibanchecksum" class="tsd-kind-icon">has<wbr>Valid<wbr>Iban<wbr>Checksum</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_lib_validators_isiban_.html#hasvalidibanformat" class="tsd-kind-icon">has<wbr>Valid<wbr>Iban<wbr>Format</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_validators_isiban_.html#isiban" class="tsd-kind-icon">isIBAN</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-external-module tsd-is-not-exported"><a href="_lib_validators_isiban_.html#ibanregexthroughcountrycode" class="tsd-kind-icon">iban<wbr>Regex<wbr>Through<wbr>Country<wbr>Code</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="hasvalidibanchecksum" class="tsd-anchor"></a>
+					<h3>has<wbr>Valid<wbr>Iban<wbr>Checksum</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">has<wbr>Valid<wbr>Iban<wbr>Checksum<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L118">lib/validators/isIBAN.ts:118</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check whether string has valid IBAN Checksum
+										by performing basic mod-97 operation and
+										the remainder should equal 1
+										-- Start by rearranging the IBAN by moving the four initial characters to the end of the string
+										-- Replace each letter in the string with two digits, A -&gt; 10, B = 11, Z = 35
+										-- Interpret the string as a decimal integer and
+										-- compute the remainder on division by 97 (mod 97)
+									Reference: <a href="https://en.wikipedia.org/wiki/International_Bank_Account_Number">https://en.wikipedia.org/wiki/International_Bank_Account_Number</a></p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The target string</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>true if the string has a valid IBAN checksum, false otherwise</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="hasvalidibanformat" class="tsd-anchor"></a>
+					<h3>has<wbr>Valid<wbr>Iban<wbr>Format</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">has<wbr>Valid<wbr>Iban<wbr>Format<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L96">lib/validators/isIBAN.ts:96</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check whether string has correct universal IBAN format
+										The IBAN consists of up to 34 alphanumeric characters, as follows:
+										Country Code using ISO 3166-1 alpha-2, two letters
+										check digits, two digits and
+										Basic Bank Account Number (BBAN), up to 30 alphanumeric characters.
+									NOTE: Permitted IBAN characters are: digits [0-9] and the 26 latin alphabetic [A-Z]</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>str: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>string under validation</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="isiban" class="tsd-anchor"></a>
+					<h3>isIBAN</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">isIBAN<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L134">lib/validators/isIBAN.ts:134</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks whether the IBAN number has a valid format and checksum.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The target string</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>true if the target has a valid format and checksum, false otherwise</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="ibanregexthroughcountrycode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> iban<wbr>Regex<wbr>Through<wbr>Country<wbr>Code</h3>
+					<div class="tsd-signature tsd-kind-icon">iban<wbr>Regex<wbr>Through<wbr>Country<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L8">lib/validators/isIBAN.ts:8</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>List of country codes with
+								corresponding IBAN regular expression
+							Reference: <a href="https://en.wikipedia.org/wiki/International_Bank_Account_Number">https://en.wikipedia.org/wiki/International_Bank_Account_Number</a></p>
+						</div>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.ad" class="tsd-anchor"></a>
+						<h3>AD</h3>
+						<div class="tsd-signature tsd-kind-icon">AD<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(AD[0-9]{2})\d{8}[A-Z0-9]{12}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L9">lib/validators/isIBAN.ts:9</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.ae" class="tsd-anchor"></a>
+						<h3>AE</h3>
+						<div class="tsd-signature tsd-kind-icon">AE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(AE[0-9]{2})\d{3}\d{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L10">lib/validators/isIBAN.ts:10</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.al" class="tsd-anchor"></a>
+						<h3>AL</h3>
+						<div class="tsd-signature tsd-kind-icon">AL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(AL[0-9]{2})\d{8}[A-Z0-9]{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L11">lib/validators/isIBAN.ts:11</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.at" class="tsd-anchor"></a>
+						<h3>AT</h3>
+						<div class="tsd-signature tsd-kind-icon">AT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(AT[0-9]{2})\d{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L12">lib/validators/isIBAN.ts:12</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.az" class="tsd-anchor"></a>
+						<h3>AZ</h3>
+						<div class="tsd-signature tsd-kind-icon">AZ<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(AZ[0-9]{2})[A-Z0-9]{4}\d{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L13">lib/validators/isIBAN.ts:13</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.ba" class="tsd-anchor"></a>
+						<h3>BA</h3>
+						<div class="tsd-signature tsd-kind-icon">BA<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(BA[0-9]{2})\d{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L14">lib/validators/isIBAN.ts:14</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.be" class="tsd-anchor"></a>
+						<h3>BE</h3>
+						<div class="tsd-signature tsd-kind-icon">BE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(BE[0-9]{2})\d{12}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L15">lib/validators/isIBAN.ts:15</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.bg" class="tsd-anchor"></a>
+						<h3>BG</h3>
+						<div class="tsd-signature tsd-kind-icon">BG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(BG[0-9]{2})[A-Z]{4}\d{6}[A-Z0-9]{8}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L16">lib/validators/isIBAN.ts:16</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.bh" class="tsd-anchor"></a>
+						<h3>BH</h3>
+						<div class="tsd-signature tsd-kind-icon">BH<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(BH[0-9]{2})[A-Z]{4}[A-Z0-9]{14}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L17">lib/validators/isIBAN.ts:17</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.br" class="tsd-anchor"></a>
+						<h3>BR</h3>
+						<div class="tsd-signature tsd-kind-icon">BR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(BR[0-9]{2})\d{23}[A-Z]{1}[A-Z0-9]{1}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L18">lib/validators/isIBAN.ts:18</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.by" class="tsd-anchor"></a>
+						<h3>BY</h3>
+						<div class="tsd-signature tsd-kind-icon">BY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(BY[0-9]{2})[A-Z0-9]{4}\d{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L19">lib/validators/isIBAN.ts:19</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.ch" class="tsd-anchor"></a>
+						<h3>CH</h3>
+						<div class="tsd-signature tsd-kind-icon">CH<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(CH[0-9]{2})\d{5}[A-Z0-9]{12}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L20">lib/validators/isIBAN.ts:20</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.cr" class="tsd-anchor"></a>
+						<h3>CR</h3>
+						<div class="tsd-signature tsd-kind-icon">CR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(CR[0-9]{2})\d{18}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L21">lib/validators/isIBAN.ts:21</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.cy" class="tsd-anchor"></a>
+						<h3>CY</h3>
+						<div class="tsd-signature tsd-kind-icon">CY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(CY[0-9]{2})\d{8}[A-Z0-9]{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L22">lib/validators/isIBAN.ts:22</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.cz" class="tsd-anchor"></a>
+						<h3>CZ</h3>
+						<div class="tsd-signature tsd-kind-icon">CZ<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(CZ[0-9]{2})\d{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L23">lib/validators/isIBAN.ts:23</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.de" class="tsd-anchor"></a>
+						<h3>DE</h3>
+						<div class="tsd-signature tsd-kind-icon">DE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(DE[0-9]{2})\d{18}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L24">lib/validators/isIBAN.ts:24</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.dk" class="tsd-anchor"></a>
+						<h3>DK</h3>
+						<div class="tsd-signature tsd-kind-icon">DK<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(DK[0-9]{2})\d{14}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L25">lib/validators/isIBAN.ts:25</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.do" class="tsd-anchor"></a>
+						<h3>DO</h3>
+						<div class="tsd-signature tsd-kind-icon">DO<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(DO[0-9]{2})[A-Z]{4}\d{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L26">lib/validators/isIBAN.ts:26</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.ee" class="tsd-anchor"></a>
+						<h3>EE</h3>
+						<div class="tsd-signature tsd-kind-icon">EE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(EE[0-9]{2})\d{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L27">lib/validators/isIBAN.ts:27</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.es" class="tsd-anchor"></a>
+						<h3>ES</h3>
+						<div class="tsd-signature tsd-kind-icon">ES<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(ES[0-9]{2})\d{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L28">lib/validators/isIBAN.ts:28</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.fi" class="tsd-anchor"></a>
+						<h3>FI</h3>
+						<div class="tsd-signature tsd-kind-icon">FI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(FI[0-9]{2})\d{14}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L29">lib/validators/isIBAN.ts:29</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.fo" class="tsd-anchor"></a>
+						<h3>FO</h3>
+						<div class="tsd-signature tsd-kind-icon">FO<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(FO[0-9]{2})\d{14}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L30">lib/validators/isIBAN.ts:30</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.fr" class="tsd-anchor"></a>
+						<h3>FR</h3>
+						<div class="tsd-signature tsd-kind-icon">FR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(FR[0-9]{2})\d{10}[A-Z0-9]{11}\d{2}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L31">lib/validators/isIBAN.ts:31</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.gb" class="tsd-anchor"></a>
+						<h3>GB</h3>
+						<div class="tsd-signature tsd-kind-icon">GB<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(GB[0-9]{2})[A-Z]{4}\d{14}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L32">lib/validators/isIBAN.ts:32</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.ge" class="tsd-anchor"></a>
+						<h3>GE</h3>
+						<div class="tsd-signature tsd-kind-icon">GE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(GE[0-9]{2})[A-Z0-9]{2}\d{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L33">lib/validators/isIBAN.ts:33</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.gi" class="tsd-anchor"></a>
+						<h3>GI</h3>
+						<div class="tsd-signature tsd-kind-icon">GI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(GI[0-9]{2})[A-Z]{4}[A-Z0-9]{15}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L34">lib/validators/isIBAN.ts:34</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.gl" class="tsd-anchor"></a>
+						<h3>GL</h3>
+						<div class="tsd-signature tsd-kind-icon">GL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(GL[0-9]{2})\d{14}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L35">lib/validators/isIBAN.ts:35</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.gr" class="tsd-anchor"></a>
+						<h3>GR</h3>
+						<div class="tsd-signature tsd-kind-icon">GR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(GR[0-9]{2})\d{7}[A-Z0-9]{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L36">lib/validators/isIBAN.ts:36</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.gt" class="tsd-anchor"></a>
+						<h3>GT</h3>
+						<div class="tsd-signature tsd-kind-icon">GT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(GT[0-9]{2})[A-Z0-9]{4}[A-Z0-9]{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L37">lib/validators/isIBAN.ts:37</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.hr" class="tsd-anchor"></a>
+						<h3>HR</h3>
+						<div class="tsd-signature tsd-kind-icon">HR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(HR[0-9]{2})\d{17}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L38">lib/validators/isIBAN.ts:38</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.hu" class="tsd-anchor"></a>
+						<h3>HU</h3>
+						<div class="tsd-signature tsd-kind-icon">HU<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(HU[0-9]{2})\d{24}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L39">lib/validators/isIBAN.ts:39</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.ie" class="tsd-anchor"></a>
+						<h3>IE</h3>
+						<div class="tsd-signature tsd-kind-icon">IE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(IE[0-9]{2})[A-Z0-9]{4}\d{14}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L40">lib/validators/isIBAN.ts:40</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.il" class="tsd-anchor"></a>
+						<h3>IL</h3>
+						<div class="tsd-signature tsd-kind-icon">IL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(IL[0-9]{2})\d{19}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L41">lib/validators/isIBAN.ts:41</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.iq" class="tsd-anchor"></a>
+						<h3>IQ</h3>
+						<div class="tsd-signature tsd-kind-icon">IQ<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(IQ[0-9]{2})[A-Z]{4}\d{15}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L42">lib/validators/isIBAN.ts:42</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.is" class="tsd-anchor"></a>
+						<h3>IS</h3>
+						<div class="tsd-signature tsd-kind-icon">IS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(IS[0-9]{2})\d{22}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L43">lib/validators/isIBAN.ts:43</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.it" class="tsd-anchor"></a>
+						<h3>IT</h3>
+						<div class="tsd-signature tsd-kind-icon">IT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(IT[0-9]{2})[A-Z]{1}\d{10}[A-Z0-9]{12}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L44">lib/validators/isIBAN.ts:44</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.jo" class="tsd-anchor"></a>
+						<h3>JO</h3>
+						<div class="tsd-signature tsd-kind-icon">JO<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(JO[0-9]{2})[A-Z]{4}\d{22}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L45">lib/validators/isIBAN.ts:45</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.kw" class="tsd-anchor"></a>
+						<h3>KW</h3>
+						<div class="tsd-signature tsd-kind-icon">KW<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(KW[0-9]{2})[A-Z]{4}[A-Z0-9]{22}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L46">lib/validators/isIBAN.ts:46</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.kz" class="tsd-anchor"></a>
+						<h3>KZ</h3>
+						<div class="tsd-signature tsd-kind-icon">KZ<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(KZ[0-9]{2})\d{3}[A-Z0-9]{13}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L47">lib/validators/isIBAN.ts:47</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.lb" class="tsd-anchor"></a>
+						<h3>LB</h3>
+						<div class="tsd-signature tsd-kind-icon">LB<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(LB[0-9]{2})\d{4}[A-Z0-9]{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L48">lib/validators/isIBAN.ts:48</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.lc" class="tsd-anchor"></a>
+						<h3>LC</h3>
+						<div class="tsd-signature tsd-kind-icon">LC<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(LC[0-9]{2})[A-Z]{4}[A-Z0-9]{24}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L49">lib/validators/isIBAN.ts:49</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.li" class="tsd-anchor"></a>
+						<h3>LI</h3>
+						<div class="tsd-signature tsd-kind-icon">LI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(LI[0-9]{2})\d{5}[A-Z0-9]{12}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L50">lib/validators/isIBAN.ts:50</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.lt" class="tsd-anchor"></a>
+						<h3>LT</h3>
+						<div class="tsd-signature tsd-kind-icon">LT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(LT[0-9]{2})\d{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L51">lib/validators/isIBAN.ts:51</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.lu" class="tsd-anchor"></a>
+						<h3>LU</h3>
+						<div class="tsd-signature tsd-kind-icon">LU<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(LU[0-9]{2})\d{3}[A-Z0-9]{13}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L52">lib/validators/isIBAN.ts:52</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.lv" class="tsd-anchor"></a>
+						<h3>LV</h3>
+						<div class="tsd-signature tsd-kind-icon">LV<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(LV[0-9]{2})[A-Z]{4}[A-Z0-9]{13}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L53">lib/validators/isIBAN.ts:53</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.mc" class="tsd-anchor"></a>
+						<h3>MC</h3>
+						<div class="tsd-signature tsd-kind-icon">MC<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(MC[0-9]{2})\d{10}[A-Z0-9]{11}\d{2}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L54">lib/validators/isIBAN.ts:54</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.md" class="tsd-anchor"></a>
+						<h3>MD</h3>
+						<div class="tsd-signature tsd-kind-icon">MD<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(MD[0-9]{2})[A-Z0-9]{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L55">lib/validators/isIBAN.ts:55</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.me" class="tsd-anchor"></a>
+						<h3>ME</h3>
+						<div class="tsd-signature tsd-kind-icon">ME<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(ME[0-9]{2})\d{18}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L56">lib/validators/isIBAN.ts:56</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.mk" class="tsd-anchor"></a>
+						<h3>MK</h3>
+						<div class="tsd-signature tsd-kind-icon">MK<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(MK[0-9]{2})\d{3}[A-Z0-9]{10}\d{2}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L57">lib/validators/isIBAN.ts:57</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.mr" class="tsd-anchor"></a>
+						<h3>MR</h3>
+						<div class="tsd-signature tsd-kind-icon">MR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(MR[0-9]{2})\d{23}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L58">lib/validators/isIBAN.ts:58</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.mt" class="tsd-anchor"></a>
+						<h3>MT</h3>
+						<div class="tsd-signature tsd-kind-icon">MT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(MT[0-9]{2})[A-Z]{4}\d{5}[A-Z0-9]{18}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L59">lib/validators/isIBAN.ts:59</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.mu" class="tsd-anchor"></a>
+						<h3>MU</h3>
+						<div class="tsd-signature tsd-kind-icon">MU<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(MU[0-9]{2})[A-Z]{4}\d{19}[A-Z]{3}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L60">lib/validators/isIBAN.ts:60</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.nl" class="tsd-anchor"></a>
+						<h3>NL</h3>
+						<div class="tsd-signature tsd-kind-icon">NL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(NL[0-9]{2})[A-Z]{4}\d{10}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L61">lib/validators/isIBAN.ts:61</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.no" class="tsd-anchor"></a>
+						<h3>NO</h3>
+						<div class="tsd-signature tsd-kind-icon">NO<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(NO[0-9]{2})\d{11}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L62">lib/validators/isIBAN.ts:62</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.pk" class="tsd-anchor"></a>
+						<h3>PK</h3>
+						<div class="tsd-signature tsd-kind-icon">PK<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(PK[0-9]{2})[A-Z0-9]{4}\d{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L63">lib/validators/isIBAN.ts:63</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.pl" class="tsd-anchor"></a>
+						<h3>PL</h3>
+						<div class="tsd-signature tsd-kind-icon">PL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(PL[0-9]{2})\d{24}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L64">lib/validators/isIBAN.ts:64</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.ps" class="tsd-anchor"></a>
+						<h3>PS</h3>
+						<div class="tsd-signature tsd-kind-icon">PS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(PS[0-9]{2})[A-Z0-9]{4}\d{21}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L65">lib/validators/isIBAN.ts:65</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.pt" class="tsd-anchor"></a>
+						<h3>PT</h3>
+						<div class="tsd-signature tsd-kind-icon">PT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(PT[0-9]{2})\d{21}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L66">lib/validators/isIBAN.ts:66</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.qa" class="tsd-anchor"></a>
+						<h3>QA</h3>
+						<div class="tsd-signature tsd-kind-icon">QA<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(QA[0-9]{2})[A-Z]{4}[A-Z0-9]{21}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L67">lib/validators/isIBAN.ts:67</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.ro" class="tsd-anchor"></a>
+						<h3>RO</h3>
+						<div class="tsd-signature tsd-kind-icon">RO<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(RO[0-9]{2})[A-Z]{4}[A-Z0-9]{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L68">lib/validators/isIBAN.ts:68</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.rs" class="tsd-anchor"></a>
+						<h3>RS</h3>
+						<div class="tsd-signature tsd-kind-icon">RS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(RS[0-9]{2})\d{18}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L69">lib/validators/isIBAN.ts:69</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.sa" class="tsd-anchor"></a>
+						<h3>SA</h3>
+						<div class="tsd-signature tsd-kind-icon">SA<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(SA[0-9]{2})\d{2}[A-Z0-9]{18}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L70">lib/validators/isIBAN.ts:70</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.sc" class="tsd-anchor"></a>
+						<h3>SC</h3>
+						<div class="tsd-signature tsd-kind-icon">SC<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(SC[0-9]{2})[A-Z]{4}\d{20}[A-Z]{3}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L71">lib/validators/isIBAN.ts:71</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.se" class="tsd-anchor"></a>
+						<h3>SE</h3>
+						<div class="tsd-signature tsd-kind-icon">SE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(SE[0-9]{2})\d{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L72">lib/validators/isIBAN.ts:72</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.si" class="tsd-anchor"></a>
+						<h3>SI</h3>
+						<div class="tsd-signature tsd-kind-icon">SI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(SI[0-9]{2})\d{15}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L73">lib/validators/isIBAN.ts:73</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.sk" class="tsd-anchor"></a>
+						<h3>SK</h3>
+						<div class="tsd-signature tsd-kind-icon">SK<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(SK[0-9]{2})\d{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L74">lib/validators/isIBAN.ts:74</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.sm" class="tsd-anchor"></a>
+						<h3>SM</h3>
+						<div class="tsd-signature tsd-kind-icon">SM<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(SM[0-9]{2})[A-Z]{1}\d{10}[A-Z0-9]{12}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L75">lib/validators/isIBAN.ts:75</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.tl" class="tsd-anchor"></a>
+						<h3>TL</h3>
+						<div class="tsd-signature tsd-kind-icon">TL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(TL[0-9]{2})\d{19}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L76">lib/validators/isIBAN.ts:76</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.tn" class="tsd-anchor"></a>
+						<h3>TN</h3>
+						<div class="tsd-signature tsd-kind-icon">TN<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(TN[0-9]{2})\d{20}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L77">lib/validators/isIBAN.ts:77</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.tr" class="tsd-anchor"></a>
+						<h3>TR</h3>
+						<div class="tsd-signature tsd-kind-icon">TR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(TR[0-9]{2})\d{5}[A-Z0-9]{17}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L78">lib/validators/isIBAN.ts:78</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.ua" class="tsd-anchor"></a>
+						<h3>UA</h3>
+						<div class="tsd-signature tsd-kind-icon">UA<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(UA[0-9]{2})\d{6}[A-Z0-9]{19}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L79">lib/validators/isIBAN.ts:79</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.va" class="tsd-anchor"></a>
+						<h3>VA</h3>
+						<div class="tsd-signature tsd-kind-icon">VA<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(VA[0-9]{2})\d{18}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L80">lib/validators/isIBAN.ts:80</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.vg" class="tsd-anchor"></a>
+						<h3>VG</h3>
+						<div class="tsd-signature tsd-kind-icon">VG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(VG[0-9]{2})[A-Z0-9]{4}\d{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L81">lib/validators/isIBAN.ts:81</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="ibanregexthroughcountrycode.xk" class="tsd-anchor"></a>
+						<h3>XK</h3>
+						<div class="tsd-signature tsd-kind-icon">XK<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(XK[0-9]{2})\d{16}$/</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/fireflysemantics/validatorts/blob/09f1344/projects/validatorts/src/lib/validators/isIBAN.ts#L82">lib/validators/isIBAN.ts:82</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="_lib_validators_isiban_.html">&quot;lib/validators/isIBAN&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_lib_validators_isiban_.html#hasvalidibanchecksum" class="tsd-kind-icon">has<wbr>Valid<wbr>Iban<wbr>Checksum</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_lib_validators_isiban_.html#hasvalidibanformat" class="tsd-kind-icon">has<wbr>Valid<wbr>Iban<wbr>Format</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_lib_validators_isiban_.html#isiban" class="tsd-kind-icon">isIBAN</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_lib_validators_isiban_.html#ibanregexthroughcountrycode" class="tsd-kind-icon">iban<wbr>Regex<wbr>Through<wbr>Country<wbr>Code</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

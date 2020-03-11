@@ -1,0 +1,49 @@
+{
+  "name": "@fireflysemantics/validatorts",
+  "description": "String validation and sanitization",
+  "version": "12.2.32",
+  "homepage": "https://github.com/fireflysemantics/validatorts",
+  "scripts": {
+    "test": "jest",
+    "doc": "typedoc --out doc ./src/",
+    "update": "bump patch && ncu -u && npm i"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.3",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.1",
+    "typedoc": "^0.16.11"
+  },
+  "keywords": [
+    "validator",
+    "validation",
+    "validate",
+    "sanitization",
+    "sanitize",
+    "sanitisation",
+    "sanitise",
+    "assert"
+  ],
+  "bugs": {
+    "url": "https://github.com/fireflysemantics/validatorts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fireflysemantics/validatorts"
+  },
+  "license": "MIT",
+  "comments": {
+    "global dependencies": {
+      "@jsdevtools/version-bump-prompt global install": "npm install -g @jsdevtools/version-bump-prompt",
+      "npm-check-updates": "npm install -g npm-check-updates",
+      "npm-install-peers": "npm install -g npm-install-peers"
+    },
+    "validatorjs bugs": {
+      "url": "https://github.com/chriso/validator.js/issues"
+    },
+    "validatorjs repository": {
+      "type": "git",
+      "url": "https://github.com/chriso/validator.js.git"
+    }
+  }
+}
