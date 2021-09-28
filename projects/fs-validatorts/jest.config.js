@@ -1,10 +1,12 @@
-const baseConfig = require('../../jest.config');
-
 module.exports = {
-  ...baseConfig,
-  globals: {
-    'ts-jest': {
-      tsConfig: '<rootDir>/projects/fs-validatorts/tsconfig.spec.json',
-    },
-  },
-};
+  "roots": [
+    "<rootDir>/src/lib/"
+  ],
+  testMatch: [
+    "**/__tests__/**/*.+(ts|tsx|js)",
+    "**/?(*.)+(spec|test).+(ts|tsx|js)"
+  ],
+  "transform": {
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  }
+}

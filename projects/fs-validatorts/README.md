@@ -53,6 +53,7 @@ Run the Jest Tests for ValidatorTS
 
 ## Generate Typedoc 
 
-`npm run d`
+`npm run doc-validatorts
 
 Typedoc will be contained in the `doc` folder of the root directory.
+
