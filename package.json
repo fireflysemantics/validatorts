@@ -13,7 +13,7 @@
     "t": "cd projects/fs-validatorts && npx jest",
     "b": "ng build fs-validatorts",
     "p": "cp README.md ./projects/fs-validatorts && npm run bp && npm run b && cd dist/fs-validatorts/ && npm publish",
-    "d": "typedoc --out doc --exclude **/*.spec.ts ./projects/fs-validatorts/src/lib"
+    "d": "rm -fr doc && typedoc --out doc --exclude **/*.spec.ts ./projects/fs-validatorts/src/lib"
   },
   "private": true,
   "dependencies": {

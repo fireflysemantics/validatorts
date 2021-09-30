@@ -5,6 +5,6 @@ import { Types } from "../types";
  * @param value The value being checked.
  * @return True if the value is a number and is finite, false otherwise.
  */
-export function isNumberFinite(value: number): boolean {
+export function isFinite(value: number): boolean {
     return typeof(value)  === Types.NUMBER && isFinite(value);
 }

@@ -93,7 +93,8 @@ export * from './lib/sanitizers/unescape'
 export * from './lib/sanitizers/whitelist'
 
 export * from "./lib/validators/isPositiveFinite"
+export * from "./lib/validators/isPositiveFiniteInteger"
 export * from "./lib/validators/isNonNegativeFinite"
 export * from "./lib/validators/isNonNegativeFinite"
-export * from "./lib/validators/isNumberFinite"
-export * from "./lib/validators/isNumberFiniteInteger"
+export * from "./lib/validators/isFinite"
+export * from "./lib/validators/isFiniteInteger"
