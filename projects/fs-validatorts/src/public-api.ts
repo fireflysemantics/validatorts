@@ -91,3 +91,9 @@ export * from './lib/sanitizers/toInt'
 export * from './lib/sanitizers/trim'
 export * from './lib/sanitizers/unescape'
 export * from './lib/sanitizers/whitelist'
+
+export * from "./lib/validators/isPositiveFinite"
+export * from "./lib/validators/isNonNegativeFinite"
+export * from "./lib/validators/isNonNegativeFinite"
+export * from "./lib/validators/isNumberFinite"
+export * from "./lib/validators/isNumberFiniteInteger"
