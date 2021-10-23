@@ -1,0 +1,1 @@
+export type MessageFunctionType = (args?: string[]) => string;

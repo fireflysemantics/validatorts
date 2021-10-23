@@ -1,19 +1,14 @@
+import { TestData } from '../types/TestData'
+import { runtest } from '../util/test-util'
 import { contains } from './contains'
-const args = 'foo'
 
-it('should return true', () => {
-
-    const targets = ['foo', 'foobar', 'bazfoo']
-    targets.forEach((target) => {
-        expect(contains(target, args)).toBeTruthy()
-    })
+test('contains', () => {
+    runtest(testdata, contains)
 })
-
-it('should return false', () => {
-
-    const targets = ['bar', 'fobar']
-
-    targets.forEach((target) => {
-        expect(contains(target, args)).toBeFalsy()
-    })
-})
+const testdata: TestData[] = [
+    {
+        it: 'should test contains',
+        args: ['foo'],
+        valid: ['foo', 'foobar', 'bazfoo'],
+        invalid: ['bar', 'fobar'],
+    }]

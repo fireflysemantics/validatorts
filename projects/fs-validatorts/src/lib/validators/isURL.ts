@@ -1,4 +1,16 @@
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsURLErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_URL_ERRORS: IsURLErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 import { isFQDN } from './isFQDN';
 import { isIP } from './isIP';
@@ -23,24 +35,33 @@ export interface IsURLOptions {
   require_tld?: boolean
   require_protocol?: boolean
   require_host?: boolean
+  require_port?: boolean
   require_valid_protocol?: boolean
   allow_underscores?: boolean
   host_whitelist?: false | string[]
   host_blacklist?: false | string[]
   allow_trailing_dot?: boolean
+  allow_query_components?: boolean,
   allow_protocol_relative_urls?: boolean
+  allow_fragments?: boolean
+  validate_length?: boolean
 }
+
 
 const default_url_options:IsURLOptions = {
   protocols: ['http', 'https', 'ftp'],
   require_tld: true,
   require_protocol: false,
   require_host: true,
+  require_port: false,
   require_valid_protocol: true,
   allow_underscores: false,
   allow_trailing_dot: false,
   allow_protocol_relative_urls: false,
-}
+  allow_fragments: true,
+  allow_query_components: true,
+  validate_length: true,
+};
 
 const wrapped_ipv6 = /^\[([^\]]+)\](?::([0-9]+))?$/;
 
@@ -48,85 +69,101 @@ function isRegExp(obj:any) {
   return Object.prototype.toString.call(obj) === '[object RegExp]';
 }
 
-function checkHost(host:string, matches:RegExp[] | string[]) {
+function checkHost(host:any, matches:any) {
   for (let i = 0; i < matches.length; i++) {
-    let match:RegExp | string = matches[i];
-    if ( typeof match === 'string' || match instanceof String) {
-      if (host === match) {
-        return true;
-      }  
-    }
-    if ((isRegExp(match))) {
-      return (match as RegExp).test(host)
+    let match = matches[i];
+    if (host === match || (isRegExp(match) && match.test(host))) {
+      return true;
     }
   }
   return false;
 }
+
 /**
  * Checks whether the `target` string is valid URL
  * 
- * @param target The target string
+ * @param url The target string
  * @param options The options
  * @return true if the `target` is a valid URL, false otherwise
  */
-export function isURL(target:string, options:any) {
-  assertString(target);
-  if (!target || target.length >= 2083 || /[\s<>]/.test(target)) {
-    return false;
+export function isURL(url:string, options:any):Result<boolean|undefined>  {
+  if (!isString(url)) {
+    return new Result(
+      undefined, 
+      IS_URL_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [url])
   }
-  if (target.indexOf('mailto:') === 0) {
-    return false;
+
+  if (!url || /[\s<>]/.test(url)) {
+    return new Result(false);
+  }
+  if (url.indexOf('mailto:') === 0) {
+    return new Result(false);
   }
   options = merge(options, default_url_options);
-  let protocol, auth, host, hostname, port, port_str, split, ipv6;
-
-  split = target.split('#');
-  if (split && split.length) {
-    target = split.shift()!;
+  
+  if (options.validate_length && url.length >= 2083) {
+    return new Result(false);
   }
-
-  split = target.split('?');
-  target = split.shift()!;
-
-  split = target.split('://');
+  
+  if (!options.allow_fragments && url.includes('#')) {
+    return new Result(false);
+  }
+  
+  if (!options.allow_query_components && (url.includes('?') || url.includes('&'))) {
+    return new Result(false);
+  }
+  
+  let protocol, auth, host, hostname, port, port_str, split, ipv6;
+  
+  split = url.split('#');
+  url = split.shift()!;
+  
+  split = url.split('?');
+  url = split.shift()!;
+  
+  split = url.split('://');
   if (split.length > 1) {
-    protocol = split && split.length && split.shift()!.toLowerCase();
+    protocol = split.shift()!.toLowerCase();
     if (options.require_valid_protocol && options.protocols.indexOf(protocol) === -1) {
-      return false;
+      return new Result(false);
     }
   } else if (options.require_protocol) {
-    return false;
-  } else if (target.substr(0, 2) === '//') {
+    return new Result(false);
+  } else if (url.substr(0, 2) === '//') {
     if (!options.allow_protocol_relative_urls) {
-      return false;
+      return new Result(false);
     }
-    split[0] = target.substr(2);
+    split[0] = url.substr(2);
   }
-  target = split.join('://');
-
-  if (target === '') {
-    return false;
+  url = split.join('://');
+  
+  if (url === '') {
+    return new Result(false);
   }
-
-  split = target.split('/');
-  target = split.shift()!;
-
-  if (target === '' && !options.require_host) {
-    return true;
+  
+  split = url.split('/');
+  url = split.shift()!;
+  
+  if (url === '' && !options.require_host) {
+    return new Result(true);
   }
-
-  split = target.split('@');
+  
+  split = url.split('@');
   if (split.length > 1) {
     if (options.disallow_auth) {
-      return false;
+      return new Result(false);
     }
-    auth = split.shift();
-    if (auth && auth.indexOf(':') >= 0 && auth.split(':').length > 2) {
-      return false;
+    if (split[0] === '' || split[0].substr(0, 1) === ':') {
+      return new Result(false);
+    }
+    auth = split.shift()!;
+    if (auth.indexOf(':') >= 0 && auth.split(':').length > 2) {
+      return new Result(false);
     }
   }
   hostname = split.join('@');
-
+  
   port_str = null;
   ipv6 = null;
   const ipv6_match = hostname.match(wrapped_ipv6);
@@ -141,26 +178,38 @@ export function isURL(target:string, options:any) {
       port_str = split.join(':');
     }
   }
-
+  
   if (port_str !== null) {
     port = parseInt(port_str, 10);
     if (!/^[0-9]+$/.test(port_str) || port <= 0 || port > 65535) {
-      return false;
+      return new Result(false);
     }
+  } else if (options.require_port) {
+    return new Result(false);
   }
-
-  if (host && !isIP(host) && !isFQDN(host, options) && (!ipv6 || !isIP(ipv6, '6'))) {
-    return false;
+  
+  if (options.host_whitelist) {
+    return new Result(checkHost(host, options.host_whitelist));
   }
-
+  if (!isIP(host!) && !isFQDN(host!, options) && (!ipv6 || !isIP(ipv6, '6'))) {
+    return new Result(false);
+  }
+  
   host = host || ipv6;
-
-  if (options.host_whitelist && host && !checkHost(host, options.host_whitelist)) {
-    return false;
+  
+  if (options.host_blacklist && checkHost(host, options.host_blacklist)) {
+    return new Result(false);
   }
-  if (options.host_blacklist && host && checkHost(host, options.host_blacklist)) {
-    return false;
-  }
-
-  return true;
+  
+  return new Result(true);
 }
+
+
+
+
+
+
+
+
+
+

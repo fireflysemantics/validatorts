@@ -1,4 +1,16 @@
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsISINErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_ISIN_ERRORS: IsISINErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 const isin = /^[A-Z]{2}[0-9A-Z]{9}[0-9]$/;
 
@@ -9,10 +21,15 @@ const isin = /^[A-Z]{2}[0-9A-Z]{9}[0-9]$/;
  * @param target The string
  * @return true if the `target` string is an ISIN number, false otherwise
  */
-export function isISIN(target:string) {
-  assertString(target);
+export function isISIN(target:string):Result<boolean|undefined>  {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_ISIN_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
   if (!isin.test(target)) {
-    return false;
+    return new Result(false);
   }
 
   const checksumStr = target.replace(/[A-Z]/g, character => {
@@ -39,6 +56,5 @@ export function isISIN(target:string) {
     }
     shouldDouble = !shouldDouble;
   }
-
-  return parseInt(target.substr(target.length - 1), 10) === (10000 - sum) % 10;
+  return new Result(parseInt(target.substr(target.length - 1), 10) === (10000 - sum) % 10);
 }

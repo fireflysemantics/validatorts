@@ -1,4 +1,16 @@
 import { merge } from '../util/merge';
+import { MessageFunctionType, Result } from '../types';
+
+export interface NormalizeEmailErrors {
+  NORMALIZATION_FAILED: MessageFunctionType;
+}
+
+export const NORMALIZE_EMAIL_ERRORS: NormalizeEmailErrors =
+{
+  NORMALIZATION_FAILED: (arr?: string[]) => {
+    return `The email address ${arr![0]} could not be normalized.`;
+  }
+};
 
 const default_normalize_email_options = {
   // The following options apply to all email addresses
@@ -167,7 +179,7 @@ function dotsReplacer(match:string) {
   return '';
 }
 
-export function normalizeEmail(email:string, options:any) {
+export function normalizeEmail(email:string, options:any):Result<string|undefined> {
   options = merge(options, default_normalize_email_options);
 
   const raw_parts = email.split('@');
@@ -188,7 +200,10 @@ export function normalizeEmail(email:string, options:any) {
       parts[0] = parts[0]!.replace(/\.+/g, dotsReplacer);
     }
     if (!parts[0]!.length) {
-      return false;
+      return new Result(
+        undefined, 
+        NORMALIZE_EMAIL_ERRORS.NORMALIZATION_FAILED, 
+        [email]);
     }
     if (options.all_lowercase || options.gmail_lowercase) {
       parts[0] = parts[0]!.toLowerCase();
@@ -200,7 +215,10 @@ export function normalizeEmail(email:string, options:any) {
       parts[0] = parts[0]!.split('+')[0];
     }
     if (!parts[0]!.length) {
-      return false;
+      return new Result(
+        undefined, 
+        NORMALIZE_EMAIL_ERRORS.NORMALIZATION_FAILED, 
+        [email]);
     }
     if (options.all_lowercase || options.icloud_lowercase) {
       parts[0] = parts[0]!.toLowerCase();
@@ -211,7 +229,10 @@ export function normalizeEmail(email:string, options:any) {
       parts[0] = parts[0]!.split('+')[0];
     }
     if (!parts[0]!.length) {
-      return false;
+      return new Result(
+        undefined, 
+        NORMALIZE_EMAIL_ERRORS.NORMALIZATION_FAILED, 
+        [email]);
     }
     if (options.all_lowercase || options.outlookdotcom_lowercase) {
       parts[0] = parts[0]!.toLowerCase();
@@ -223,7 +244,10 @@ export function normalizeEmail(email:string, options:any) {
       parts[0] = (components.length > 1) ? components.slice(0, -1).join('-') : components[0];
     }
     if (!parts[0]!.length) {
-      return false;
+      return new Result(
+        undefined, 
+        NORMALIZE_EMAIL_ERRORS.NORMALIZATION_FAILED, 
+        [email]);
     }
     if (options.all_lowercase || options.yahoo_lowercase) {
       parts[0] = parts[0]!.toLowerCase();
@@ -237,5 +261,5 @@ export function normalizeEmail(email:string, options:any) {
     // Any other address
     parts[0] = parts[0]!.toLowerCase();
   }
-  return parts.join('@');
+  return new Result(parts.join('@'));
 }

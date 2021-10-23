@@ -4,7 +4,7 @@ it('should return true', () => {
 
     let targets = ['abc', 'ABC', 'FoObar']
     targets.forEach((target) => {
-        expect(isAlpha(target)).toBeTruthy()
+        expect(isAlpha(target).value).toBeTruthy()
     })
 })
 
@@ -20,7 +20,7 @@ it('should return false', () => {
         'Heiß',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target)).toBeFalsy()
+        expect(isAlpha(target).value).toBeFalsy()
     })
 })
 
@@ -33,7 +33,7 @@ it('should validate bulgarian alpha strings', () => {
         'яГоДа',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, 'bg-BG')).toBeTruthy()
+        expect(isAlpha(target, 'bg-BG').value).toBeTruthy()
     })
 
     targets = [
@@ -45,7 +45,7 @@ it('should validate bulgarian alpha strings', () => {
         'ехо!',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, 'bg-BG')).toBeFalsy()
+        expect(isAlpha(target, 'bg-BG').value).toBeFalsy()
     })
 })
 
@@ -59,7 +59,7 @@ it('should validate czech alpha strings', () => {
         'ódy',
       ]
     targets.forEach((target) => {
-        expect(isAlpha(target, 'cs-CZ')).toBeTruthy()
+        expect(isAlpha(target, 'cs-CZ').value).toBeTruthy()
     })
 
     targets = [
@@ -71,7 +71,7 @@ it('should validate czech alpha strings', () => {
         'ехо!',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, 'cs-CZ')).toBeFalsy()
+        expect(isAlpha(target, 'cs-CZ').value).toBeFalsy()
     })
 })
 
@@ -92,7 +92,7 @@ it('should validate slovak alpha strings', () => {
         'ódy',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -102,7 +102,7 @@ it('should validate slovak alpha strings', () => {
         'مرحبا العا ',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -117,7 +117,7 @@ it('should validate danish alpha strings', () => {
         'Åre',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -126,7 +126,7 @@ it('should validate danish alpha strings', () => {
         '',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -141,7 +141,7 @@ it('should validate dutch alpha strings', () => {
         'héél',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -150,7 +150,7 @@ it('should validate dutch alpha strings', () => {
         'Øre',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -164,7 +164,7 @@ it('should validate dutch alpha strings', () => {
         'Heiß',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -173,7 +173,7 @@ it('should validate dutch alpha strings', () => {
         '',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -187,7 +187,7 @@ it('should validate german alpha strings', () => {
         'Heiß',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -196,7 +196,7 @@ it('should validate german alpha strings', () => {
         '',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -208,7 +208,7 @@ it('should validate hungarian alpha strings', () => {
         'ÁRVÍZTŰRŐTÜKÖRFÚRÓGÉP',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -218,7 +218,7 @@ it('should validate hungarian alpha strings', () => {
         '',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -232,7 +232,7 @@ it('should validate portuguese alpha strings', () => {
         'àäãcëüïÄÏÜ',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -243,7 +243,7 @@ it('should validate portuguese alpha strings', () => {
         '',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -261,7 +261,7 @@ it('should validate italien alpha strings', () => {
         'genî',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -271,7 +271,7 @@ it('should validate italien alpha strings', () => {
         '',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -283,7 +283,7 @@ it('should validate arabic alpha strings', () => {
         'اَبِتَثّجً',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -298,7 +298,7 @@ it('should validate arabic alpha strings', () => {
         'Heiß',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -312,7 +312,7 @@ it('should validate farsi alpha strings', () => {
         'خواهر',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -327,7 +327,7 @@ it('should validate farsi alpha strings', () => {
         'Heiß',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -339,7 +339,7 @@ it('should validate kurdish alpha strings', () => {
         'کوردستان',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -354,7 +354,7 @@ it('should validate kurdish alpha strings', () => {
         'Heiß',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -368,7 +368,7 @@ it('should validate norwegian alpha strings', () => {
         'Åre',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -383,7 +383,7 @@ it('should validate norwegian alpha strings', () => {
         'Heiß',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -400,7 +400,7 @@ it('should validate polish alpha strings', () => {
         'Pozwól',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -409,7 +409,7 @@ it('should validate polish alpha strings', () => {
         'föö!2!',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -421,7 +421,7 @@ it('should validate serbian alpha strings', () => {
         'ЧПСТЋЏ',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -430,7 +430,7 @@ it('should validate serbian alpha strings', () => {
         'föö!!',
     ]  
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -442,7 +442,7 @@ it('should validate serbian latin alpha strings', () => {
         'ŠATROĆčđš',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets =  [
@@ -451,7 +451,7 @@ it('should validate serbian latin alpha strings', () => {
         'föö!2!',
     ] 
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -466,7 +466,7 @@ it('should validate spanish alpha strings', () => {
         'español',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -475,7 +475,7 @@ it('should validate spanish alpha strings', () => {
         'föö!!',
     ] 
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -489,7 +489,7 @@ it('should validate swedish alpha strings', () => {
         'Åre',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -498,7 +498,7 @@ it('should validate swedish alpha strings', () => {
         '',
     ] 
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 it('should validate swedish alpha strings', () => {
@@ -511,7 +511,7 @@ it('should validate swedish alpha strings', () => {
         'Åre',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -520,7 +520,7 @@ it('should validate swedish alpha strings', () => {
         '',
     ] 
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -532,7 +532,7 @@ it('should validate defined arabic locales alpha strings', () => {
         'اَبِتَثّجً',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -547,7 +547,7 @@ it('should validate defined arabic locales alpha strings', () => {
         'Heiß',
     ] 
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -558,7 +558,7 @@ it('should validate defined turkish alpha strings', () => {
         'AİıÖöÇçŞşĞğÜüZ'
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -571,7 +571,7 @@ it('should validate defined turkish alpha strings', () => {
         'Heiß',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -582,7 +582,7 @@ it('should validate defined urkrainian alpha strings', () => {
         'АБВГҐДЕЄЖЗИIЇЙКЛМНОПРСТУФХЦШЩЬЮЯ',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -596,7 +596,7 @@ it('should validate defined urkrainian alpha strings', () => {
         'ЫыЪъЭэ',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -610,7 +610,7 @@ it('should validate defined greek alpha strings', () => {
         'ΆΈΉΊΪΫΎΏ',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -623,7 +623,7 @@ it('should validate defined greek alpha strings', () => {
         'jαckγ',
     ]    
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -635,7 +635,7 @@ it('should validate defined Hebrew alpha strings', () => {
         'שלום',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -645,7 +645,7 @@ it('should validate defined Hebrew alpha strings', () => {
         '',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -657,7 +657,7 @@ it('should validate defined Hebrew alpha strings', () => {
         'שלום',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeTruthy()
+        expect(isAlpha(target, args).value).toBeTruthy()
     })
 
     targets = [
@@ -667,7 +667,7 @@ it('should validate defined Hebrew alpha strings', () => {
         '',
     ]
     targets.forEach((target) => {
-        expect(isAlpha(target, args)).toBeFalsy()
+        expect(isAlpha(target, args).value).toBeFalsy()
     })
 })
 
@@ -679,7 +679,7 @@ it('should error on invalid locale', () => {
         'ABC',
     ]
     targets.forEach((target) => {
-        expect(()=>{isAlpha(target, args)}).toThrow()
+        expect(()=>{isAlpha(target, args).message}).toBeTruthy()
     })
 })
 

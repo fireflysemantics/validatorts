@@ -1,7 +1,25 @@
 import { merge } from '../util/merge';
-import { assertString } from '../util/assertString';
 import { includes } from '../util/includes';
 import { decimal } from './alpha';
+
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsDecimalErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+  INVALID_LOCALE: MessageFunctionType;
+}
+
+export const IS_DECIMAL_ERRORS: IsDecimalErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  },
+  INVALID_LOCALE: (arr?: string[]) => {
+    return `The locale ${arr![0]} is invalid.`;
+  }
+};
+
 
 function decimalRegExp(options:any) {
   const regExp = new RegExp(`^[-+]?([0-9]+)?(\\${decimal[options.locale]}[0-9]{${options.decimal_digits}})${options.force_decimal ? '' : '?'}$`);
@@ -26,11 +44,19 @@ const blacklist = ['', '-', '+'];
  * @param options The options
  * @return true if the `target` is a decimal, false otherwise
  */
-export function isDecimal(target: string, options:any) {
-  assertString(target);
+export function isDecimal(target: string, options:any):Result<boolean|undefined> {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_DECIMAL_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
   options = merge(options, default_decimal_options);
   if (options.locale in decimal) {
-    return !includes(blacklist, target.replace(/ /g, '')) && decimalRegExp(options).test(target);
+    return new Result(!includes(blacklist, target.replace(/ /g, '')) && decimalRegExp(options).test(target));
   }
-  throw new Error(`Invalid locale '${options.locale}'`);
+  return new Result(
+    undefined, 
+    IS_DECIMAL_ERRORS.INVALID_LOCALE,
+    [options.locale])
 }

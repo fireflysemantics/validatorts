@@ -1,4 +1,16 @@
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsRgbColorErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_RGB_COLOR_ERRORS: IsRgbColorErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 const rgbColor = /^rgb\((([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]),){2}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\)$/;
 const rgbaColor = /^rgba\((([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]),){3}(0?\.\d|1(\.0)?|0(\.0)?)\)$/;
@@ -12,15 +24,20 @@ const rgbaColorPercent = /^rgba\((([0-9]%|[1-9][0-9]%|100%),){3}(0?\.\d|1(\.0)?|
  * @return true if the `target` is a valid RGB color, false otherwise
  * 
  */
-export function isRgbColor(target:string, includePercentValues:string = `true`) {
-  assertString(target);
-
-  if (!includePercentValues) {
-    return rgbColor.test(target) || rgbaColor.test(target);
+export function isRgbColor(target:string, includePercentValues:string = `true`):Result<boolean|undefined>  {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_RGB_COLOR_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
   }
 
-  return rgbColor.test(target) ||
+  if (!includePercentValues) {
+    return new Result(rgbColor.test(target) || rgbaColor.test(target));
+  }
+
+  return new Result(rgbColor.test(target) ||
     rgbaColor.test(target) ||
     rgbColorPercent.test(target) ||
-    rgbaColorPercent.test(target);
+    rgbaColorPercent.test(target));
 }

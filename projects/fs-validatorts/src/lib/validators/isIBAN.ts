@@ -1,12 +1,24 @@
 import { StringKeyRegEx } from '../types';
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsIBANErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_IBAN_ERRORS: IsIBANErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 /**
  * List of country codes with
  * corresponding IBAN regular expression
  * Reference: https://en.wikipedia.org/wiki/International_Bank_Account_Number
  */
-const ibanRegexThroughCountryCode:StringKeyRegEx = {
+ const ibanRegexThroughCountryCode:StringKeyRegEx = {
   AD: /^(AD[0-9]{2})\d{8}[A-Z0-9]{12}$/,
   AE: /^(AE[0-9]{2})\d{3}\d{16}$/,
   AL: /^(AL[0-9]{2})\d{8}[A-Z0-9]{16}$/,
@@ -26,6 +38,7 @@ const ibanRegexThroughCountryCode:StringKeyRegEx = {
   DK: /^(DK[0-9]{2})\d{14}$/,
   DO: /^(DO[0-9]{2})[A-Z]{4}\d{20}$/,
   EE: /^(EE[0-9]{2})\d{16}$/,
+  EG: /^(EG[0-9]{2})\d{25}$/,
   ES: /^(ES[0-9]{2})\d{20}$/,
   FI: /^(FI[0-9]{2})\d{14}$/,
   FO: /^(FO[0-9]{2})\d{14}$/,
@@ -41,6 +54,7 @@ const ibanRegexThroughCountryCode:StringKeyRegEx = {
   IE: /^(IE[0-9]{2})[A-Z0-9]{4}\d{14}$/,
   IL: /^(IL[0-9]{2})\d{19}$/,
   IQ: /^(IQ[0-9]{2})[A-Z]{4}\d{15}$/,
+  IR: /^(IR[0-9]{2})0\d{2}0\d{18}$/,
   IS: /^(IS[0-9]{2})\d{22}$/,
   IT: /^(IT[0-9]{2})[A-Z]{1}\d{10}[A-Z0-9]{12}$/,
   JO: /^(JO[0-9]{2})[A-Z]{4}\d{22}$/,
@@ -59,6 +73,7 @@ const ibanRegexThroughCountryCode:StringKeyRegEx = {
   MR: /^(MR[0-9]{2})\d{23}$/,
   MT: /^(MT[0-9]{2})[A-Z]{4}\d{5}[A-Z0-9]{18}$/,
   MU: /^(MU[0-9]{2})[A-Z]{4}\d{19}[A-Z]{3}$/,
+  MZ: /^(MZ[0-9]{2})\d{21}$/,
   NL: /^(NL[0-9]{2})[A-Z]{4}\d{10}$/,
   NO: /^(NO[0-9]{2})\d{11}$/,
   PK: /^(PK[0-9]{2})[A-Z0-9]{4}\d{16}$/,
@@ -74,13 +89,14 @@ const ibanRegexThroughCountryCode:StringKeyRegEx = {
   SI: /^(SI[0-9]{2})\d{15}$/,
   SK: /^(SK[0-9]{2})\d{20}$/,
   SM: /^(SM[0-9]{2})[A-Z]{1}\d{10}[A-Z0-9]{12}$/,
+  SV: /^(SV[0-9]{2})[A-Z0-9]{4}\d{20}$/,
   TL: /^(TL[0-9]{2})\d{19}$/,
   TN: /^(TN[0-9]{2})\d{20}$/,
   TR: /^(TR[0-9]{2})\d{5}[A-Z0-9]{17}$/,
   UA: /^(UA[0-9]{2})\d{6}[A-Z0-9]{19}$/,
   VA: /^(VA[0-9]{2})\d{18}$/,
   VG: /^(VG[0-9]{2})[A-Z0-9]{4}\d{16}$/,
-  XK: /^(XK[0-9]{2})\d{16}$/,
+  XK: /^(XK[0-9]{2})\d{16}$/
 };
 
 /**
@@ -96,7 +112,7 @@ const ibanRegexThroughCountryCode:StringKeyRegEx = {
  */
 function hasValidIbanFormat(str:string) {
   // Strip white spaces and hyphens, keep only digits and A-Z latin alphabetic
-  const strippedStr = str.replace(/[^A-Z0-9]+/gi, '').toUpperCase();
+  const strippedStr = str.replace(/[\s\-]+/gi, '').toUpperCase();                                  
   const isoCountryCode = strippedStr.slice(0, 2).toUpperCase();
 
   return (isoCountryCode in ibanRegexThroughCountryCode) &&
@@ -132,8 +148,13 @@ function hasValidIbanChecksum(target:string):boolean {
  * @param target The target string
  * @return true if the target has a valid format and checksum, false otherwise
  */
-export function isIBAN(target: string) {
-  assertString(target);
+export function isIBAN(target: string):Result<boolean|undefined> {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_IBAN_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
 
-  return hasValidIbanFormat(target) && hasValidIbanChecksum(target);
+  return new Result(hasValidIbanFormat(target) && hasValidIbanChecksum(target));
 }

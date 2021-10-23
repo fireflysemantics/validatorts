@@ -1,11 +1,24 @@
 import { merge } from '../util/merge';
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsCurrencyErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_CURRENCY_ERRORS: IsCurrencyErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 function currencyRegex(options:any) {
   let decimal_digits = `\\d{${options.digits_after_decimal[0]}}`;
-  options.digits_after_decimal.forEach((digit:any, index:any) => { if (index !== 0) decimal_digits = `${decimal_digits}|\\d{${digit}}`; });
+  options.digits_after_decimal.forEach((digit:number, index:number) => { if (index !== 0) decimal_digits = `${decimal_digits}|\\d{${digit}}`; });
+
   const symbol =
-    `(\\${options.symbol.replace(/\./g, '\\.')})${(options.require_symbol ? '' : '?')}`,
+    `(${options.symbol.replace(/\W/, (m:any)=> `\\${m}`)})${(options.require_symbol ? '' : '?')}`,
     negative = '-?',
     whole_dollar_amount_without_sep = '[1-9]\\d*',
     whole_dollar_amount_with_sep = `[1-9]\\d{0,2}(\\${options.thousands_separator}\\d{3})*`,
@@ -52,32 +65,8 @@ function currencyRegex(options:any) {
   return new RegExp(`^(?!-? )(?=.*\\d)${pattern}$`);
 }
 
-/**
- * IsCurrency Options.
- */
-export interface IsCurrencyOptions {
-  symbol?: string
-  require_symbol?: boolean
-  allow_space_after_symbol?: boolean
-  symbol_after_digits?: boolean
-  allow_negatives?: boolean
-  parens_for_negatives?: boolean
-  negative_sign_before_digits?: boolean
-  negative_sign_after_digits?: boolean
-  allow_negative_sign_placeholder?: boolean
-  thousands_separator?: string
-  decimal_separator?: string
-  allow_decimal: boolean
-  require_decimal: boolean
-  digits_after_decimal: number[]
-  allow_space_after_digits?: boolean
-}
 
-
-/**
- * The currency default options
- */
-const default_currency_options:IsCurrencyOptions = {
+const default_currency_options = {
   symbol: '$',
   require_symbol: false,
   allow_space_after_symbol: false,
@@ -102,8 +91,13 @@ const default_currency_options:IsCurrencyOptions = {
  * @param options The options
  * @return true if the `target` is a currency, false otherwise
  */
-export function isCurrency(str: string, options:any) {
-  assertString(str);
+export function isCurrency(target: string, options:any):Result<boolean|undefined> {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_CURRENCY_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
   options = merge(options, default_currency_options);
-  return currencyRegex(options).test(str);
+  return new Result(currencyRegex(options).test(target));
 }

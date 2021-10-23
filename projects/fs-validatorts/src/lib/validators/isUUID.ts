@@ -1,5 +1,17 @@
 import { StringKeyRegEx } from '../types';
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsUUIDErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_UUID_ERRORS: IsUUIDErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 const uuid:StringKeyRegEx = {
   3: /^[0-9A-F]{8}-[0-9A-F]{4}-3[0-9A-F]{3}-[0-9A-F]{4}-[0-9A-F]{12}$/i,
@@ -15,9 +27,14 @@ const uuid:StringKeyRegEx = {
  * @param version The version
  * @return true if the `target` is  a valid UUID, false otherwise
  */
-export function isUUID(str:string, version?:string) {
+export function isUUID(target:string, version?:string):Result<boolean|undefined>  {
   version = version ? version : 'all'
-  assertString(str);
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_UUID_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
   const pattern = uuid[version];
-  return pattern && pattern.test(str);
+  return new Result(pattern && pattern.test(target));
 }

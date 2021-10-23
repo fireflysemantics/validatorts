@@ -1,15 +1,36 @@
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsBtcErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_BTC_ERRORS: IsBtcErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
+
 
 // supports Bech32 addresses
-const btc = /^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/;
-
+const bech32 = /^(bc1)[a-z0-9]{25,39}$/;
+const base58 = /^(1|3)[A-HJ-NP-Za-km-z1-9]{25,39}$/;
 /**
  * Checks whether the `target` is a btc address 
  * 
  * @param target The target string
  * @return true if the `target` is a btc address, false otherwise
  */
-export function isBtcAddress(str: string) {
-  assertString(str);
-  return btc.test(str);
+export function isBtcAddress(target: string): Result<boolean | undefined> {
+  if (!isString(target)) {
+    return new Result(
+      undefined,
+      IS_BTC_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
+  if (target.startsWith('bc1')) {
+    return new Result(bech32.test(target));
+  }
+  return new Result(base58.test(target));
 }

@@ -1,8 +1,22 @@
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsISO8601Errors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_ISO8601_ERRORS: IsISO8601Errors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 /* eslint-disable max-len */
 // from http://goo.gl/0ejHHW
 const iso8601 = /^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-3])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/;
+// same as above, except with a strict 'T' separator between date and time
+const iso8601StrictSeparator = /^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-3])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T]((([01]\d|2[0-3])((:?)[0-5]\d)?|24:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/;
 /* eslint-enable max-len */
 const isValidDate = (str:string) => {
   // str must have passed the ISO8601 check
@@ -32,9 +46,7 @@ const isValidDate = (str:string) => {
       && d.getUTCDate() === day;
   }
   return true;
-}
-
-
+};
 /**
  * Checks whether the `target` string is a valid ISO8601 date
  * 
@@ -42,10 +54,16 @@ const isValidDate = (str:string) => {
  * @param options The options
  * @return true if the `target` is a valid ISO8601 date, false otherwise
  */
-export function isISO8601(str:string, options?:any) {
-  assertString(str);
-  const check = iso8601.test(str);
-  if (!options) return check;
-  if (check && options.strict) return isValidDate(str);
-  return check;
+export function isISO8601(target:string, options?:any):Result<boolean|undefined>  {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_ISO8601_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
+  const check = options.strictSeparator ? iso8601StrictSeparator.test(target) : iso8601.test(target);
+  if (check && options.strict) {
+    return new Result(isValidDate(target));
+  }
+  return new Result(check);
 }

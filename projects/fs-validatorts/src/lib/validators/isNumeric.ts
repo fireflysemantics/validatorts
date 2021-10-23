@@ -1,6 +1,18 @@
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+import { decimal } from './alpha';
 
-const numeric = /^[+-]?([0-9]*[.])?[0-9]+$/;
+export interface IsNumericErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_NUMERIC_ERRORS: IsNumericErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
+
 const numericNoSymbols = /^[0-9]+$/;
 
 /**
@@ -10,10 +22,16 @@ const numericNoSymbols = /^[0-9]+$/;
  * @param options The options
  * @return true if the `target` contains only numbers, false otherwise
  */
-export function isNumeric(str:string, options:any) {
-  assertString(str);
-  if (options && options.no_symbols) {
-    return numericNoSymbols.test(str);
+export function isNumeric(target:string, options:any):Result<boolean|undefined>  {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_NUMERIC_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
   }
-  return numeric.test(str);
+
+  if (options && options.no_symbols) {
+    return new Result(numericNoSymbols.test(target));
+  }
+  return new Result((new RegExp(`^[+-]?([0-9]*[${(options || {}).locale ? decimal[options.locale] : '.'}])?[0-9]+$`)).test(target));
 }

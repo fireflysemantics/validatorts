@@ -1,3 +1,21 @@
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsPassportNumberErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+  INVALID_COUNTRY_CODE: MessageFunctionType;
+}
+
+export const IS_PASSPORT_NUMBER_ERRORS: IsPassportNumberErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  },
+  INVALID_COUNTRY_CODE: (arr?: string[]) => {
+    return `The country code argument ${arr![0]} is invalid.`;
+  }  
+};
+
 import { StringKeyRegEx } from "../types";
 
 /**
@@ -54,13 +72,25 @@ const passportRegexByCountryCode:StringKeyRegEx = {
  * relative to provided `arg` ISO Country Code.
  *
  * @param target The passport number
- * @param arg The country code
+ * @param countryCode The country code
  * @return true if the `target` is a passport number, false otherwise
  */
-export function isPassportNumber(target:string, arg:string) {
+export function isPassportNumber(target:string, countryCode:string):Result<boolean|undefined>  {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_PASSPORT_NUMBER_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 
+      [target])
+  }
+  if (!isString(countryCode)) {
+    return new Result(
+      undefined, 
+      IS_PASSPORT_NUMBER_ERRORS.INVALID_COUNTRY_CODE, 
+      [countryCode])
+  }
   /** Remove All Whitespaces, Convert to UPPERCASE */
   const normalizedStr = target.replace(/\s/g, '').toUpperCase();
 
-  return (arg.toUpperCase() in passportRegexByCountryCode) &&
-    passportRegexByCountryCode[arg].test(normalizedStr);
+  return new Result((countryCode.toUpperCase() in passportRegexByCountryCode) &&
+    passportRegexByCountryCode[countryCode].test(normalizedStr));
 }

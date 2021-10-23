@@ -1,9 +1,14 @@
+import { TestData } from '../types/TestData'
+import { runtest } from '../util/test-util'
 import { equals } from './equals'
 
-it('should return true', () => {
-    expect(equals('abc', 'abc')).toBeTruthy()
+test('equals', () => {
+    runtest(testdata, equals)
 })
-
-it('should return false', () => {
-    expect(equals('Abc', '123')).toBeFalsy()
-})
+const testdata: TestData[] = [
+    {
+        it: 'should test contains',
+        args: ['abc'],
+        valid: ['abc'],
+        invalid: ['123'],
+    }]

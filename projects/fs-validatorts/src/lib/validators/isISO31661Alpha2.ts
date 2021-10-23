@@ -1,5 +1,17 @@
-import { assertString } from '../util/assertString';
 import { includes } from '../util/includes';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsISO31661Alpha2Errors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_ISO31661ALPHA2_ERRORS: IsISO31661Alpha2Errors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 // from https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 const validISO31661Alpha2CountriesCodes = [
@@ -37,7 +49,12 @@ const validISO31661Alpha2CountriesCodes = [
  * @param target The target string
  * @return true if the `target` is a valid is a valid ISO 3166-1 alpha-2 officially assigned country code, false otherwise
  */
-export function isISO31661Alpha2(target:string) {
-  assertString(target);
-  return includes(validISO31661Alpha2CountriesCodes, target.toUpperCase());
+export function isISO31661Alpha2(target:string):Result<boolean|undefined>  {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_ISO31661ALPHA2_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
+  return new Result(includes(validISO31661Alpha2CountriesCodes, target.toUpperCase()));
 }

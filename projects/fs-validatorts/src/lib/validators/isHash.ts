@@ -1,5 +1,17 @@
-import { StringKeyNumber, StringKeyString } from '../types';
-import { assertString } from '../util/assertString';
+import { StringKeyNumber } from '../types';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsHashErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_HASH_ERRORS: IsHashErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 const lengths:StringKeyNumber = {
   md5: 32,
@@ -24,8 +36,13 @@ const lengths:StringKeyNumber = {
  * @param arg The arg
  * @return true if the `target` is hashed using the `arg` algorithm, false otherwise
  */
-export function isHash(target: string, arg:string):boolean {
-  assertString(target);
+export function isHash(target: string, arg:string):Result<boolean | undefined> {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_HASH_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
   const hash = new RegExp(`^[a-fA-F0-9]{${lengths[arg]}}$`);
-  return hash.test(target);
+  return new Result(hash.test(target));
 }

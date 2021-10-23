@@ -1,5 +1,17 @@
-import { assertString } from '../util/assertString';
 import { merge } from '../util/merge';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsEmptyErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_EMPTY_ERRORS: IsEmptyErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 const default_is_empty_options = {
   ignore_whitespace: false,
@@ -14,9 +26,14 @@ const default_is_empty_options = {
  * @param options The options
  * @return true if the `target` is empty
  */
-export function isEmpty(str: string, options:any) {
-  assertString(str);
+export function isEmpty(target: string, options:any):Result<boolean | undefined> {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_EMPTY_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
   options = merge(options, default_is_empty_options);
 
-  return (options.ignore_whitespace ? str.trim().length : str.length) === 0;
+  return new Result((options.ignore_whitespace ? target.trim().length : target.length) === 0);
 }

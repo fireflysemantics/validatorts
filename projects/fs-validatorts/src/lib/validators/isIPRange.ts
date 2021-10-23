@@ -1,7 +1,21 @@
-import { assertString } from '../util/assertString';
 import { isIP } from './isIP';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
 
-const subnetMaybe = /^\d{1,2}$/;
+export interface IsIPRangeErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_IPRANGE_ERRORS: IsIPRangeErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
+
+const subnetMaybe = /^\d{1,3}$/;
+const v4Subnet:number = 32;
+const v6Subnet:number = 128;
 
 /**
  * Checks whether the `target` is an IP range
@@ -9,23 +23,49 @@ const subnetMaybe = /^\d{1,2}$/;
  * @param target The target string
  * @return true if the `target` is an IP range
  */
-export function isIPRange(target:string) {
-  assertString(target);
-  const parts = target.split('/');
+export function isIPRange(target:string, version:string = ''):Result<boolean|undefined>  {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_IPRANGE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
+  const parts:any[] = target.split('/');
 
   // parts[0] -> ip, parts[1] -> subnet
   if (parts.length !== 2) {
-    return false;
+    return new Result(false);
   }
 
   if (!subnetMaybe.test(parts[1])) {
-    return false;
+    return new Result(false);
   }
 
   // Disallow preceding 0 i.e. 01, 02, ...
   if (parts[1].length > 1 && parts[1].startsWith('0')) {
-    return false;
+    return new Result(false);
   }
 
-  return isIP(parts[0], '4') && parseInt(parts[1]) <= 32 && parseInt(parts[1]) >= 0;
+  const isValidIP = isIP(parts[0], version);
+  if (!isValidIP) {
+    return new Result(false);
+  }
+
+    // Define valid subnet according to IP's version
+    let expectedSubnet:number;
+    switch (String(version)) {
+      case '4':
+        expectedSubnet = v4Subnet;
+        break;
+  
+      case '6':
+        expectedSubnet = v6Subnet;
+        break;
+  
+      default:
+        expectedSubnet = isIP(parts[0], '6') ? v6Subnet : v4Subnet;
+    }
+    return new Result(parts[1] <= expectedSubnet && parts[1] >= 0);
 }
+
+

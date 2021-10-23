@@ -1,12 +1,12 @@
 import { isFiniteInteger } from "./isFiniteInteger";
 
 test(`should be finite and integer`, () => {
-  expect(isFiniteInteger(4.4)).toBeFalsy();
-  expect(isFiniteInteger(4)).toBeTruthy();
-  expect(isFiniteInteger(-0)).toBeTruthy();
-  expect(isFiniteInteger(0)).toBeTruthy();
-  expect(isFiniteInteger(-1)).toBeTruthy();
-  expect(isFiniteInteger(NaN)).toBeFalsy();
-  expect(isFiniteInteger(Infinity)).toBeFalsy();
-  expect(isFiniteInteger(-Infinity)).toBeFalsy();
+  expect(isFiniteInteger(4.4).value).toBeFalsy();
+  expect(isFiniteInteger(4).value).toBeTruthy();
+  expect(isFiniteInteger(-0).value).toBeTruthy();
+  expect(isFiniteInteger(0).value).toBeTruthy();
+  expect(isFiniteInteger(-1).value).toBeTruthy();
+  expect(isFiniteInteger(NaN).value).toBeFalsy();
+  expect(isFiniteInteger(Infinity).value).toBeFalsy();
+  expect(isFiniteInteger(-Infinity).value).toBeFalsy();
 });

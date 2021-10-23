@@ -1,5 +1,21 @@
 import { StringKeyRegEx } from '../types';
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsPostalCodeErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+  INVALID_LOCALE: MessageFunctionType;
+}
+
+export const IS_POSTAL_CODE_ERRORS: IsPostalCodeErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  },
+  INVALID_LOCALE: (arr?: string[]) => {
+    return `The locale argument ${arr![0]} is invalid.`;
+  }
+};
 
 // common patterns
 const threeDigit = /^\d{3}$/;
@@ -68,25 +84,33 @@ export const postalCodeLocales = Object.keys(patterns);
  * Checks whether the `target` string is a valid postal code
  * 
  * @param target The target string
- * @param arg The locale
+ * @param local The locale
  * @return true if the `target` is a valid postal code, false otherwise
  */
-export function isPostalCode(target:string, arg:string) {
-  assertString(target);
-  if (arg in patterns) {
-    return patterns[arg].test(target);
-  } else if (arg === 'any') {
+export function isPostalCode(target:string, local:string):Result<boolean|undefined>  {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_POSTAL_CODE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
+  if (local in patterns) {
+    return new Result(patterns[local].test(target));
+  } else if (local === 'any') {
     for (const key in patterns) {
       // https://github.com/gotwarlost/istanbul/blob/master/ignoring-code-for-coverage.md#ignoring-code-for-coverage-purposes
       // istanbul ignore else
       if (patterns.hasOwnProperty(key)) {
         const pattern = patterns[key];
         if (pattern.test(target)) {
-          return true;
+          return new Result(true);
         }
       }
     }
-    return false;
+    return new Result(false);
   }
-  throw new Error(`Invalid locale '${arg}'`);
+  return new Result(
+    undefined, 
+    IS_POSTAL_CODE_ERRORS.INVALID_LOCALE,
+    [local])
 }

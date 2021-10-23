@@ -1,4 +1,16 @@
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsEMailErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_EMAIL_ERRORS: IsEMailErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 import { merge } from '../util/merge';
 import { isByteLength } from './isByteLength';
@@ -13,18 +25,24 @@ export interface IsEmailOptions {
   allow_display_name?: boolean
   allow_utf8_local_part?: boolean
   require_tld?: boolean
+  blacklisted_chars: string,
+  ignore_max_length: boolean,
+  host_blacklist: any[],
 }
 
-export const default_email_options:IsEmailOptions = {
-  require_display_name: false,
+const default_email_options:IsEmailOptions = {
   allow_display_name: false,
+  require_display_name: false,
   allow_utf8_local_part: true,
   require_tld: true,
-}
+  blacklisted_chars: '',
+  ignore_max_length: false,
+  host_blacklist: [],
+};
 
 /* eslint-disable max-len */
 /* eslint-disable no-control-regex */
-const splitNameAddress = /^([^\x00-\x1F\x7F-\x9F\cX]+)<(.+)>$/i;
+const splitNameAddress = /^([^\x00-\x1F\x7F-\x9F\cX]+)</i;
 const emailUserPart = /^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~]+$/i;
 const gmailUserPart = /^[a-z\d]+$/;
 const quotedEmailUser = /^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f]))*$/i;
@@ -39,9 +57,7 @@ const defaultMaxEmailLength = 254;
  * @param display_name
  */
 function validateDisplayName(display_name:string) {
-  const trim_quotes = display_name.match(/^"(.+)"$/i);
-  const display_name_without_quotes = trim_quotes ? trim_quotes[1] : display_name;
-
+  const display_name_without_quotes = display_name.replace(/^"(.+)"$/, '$1');
   // display name with only spaces is not valid
   if (!display_name_without_quotes.trim()) {
     return false;
@@ -52,7 +68,7 @@ function validateDisplayName(display_name:string) {
   if (contains_illegal) {
     // if contains illegal characters,
     // must to be enclosed in double-quotes, otherwise it's not a valid display name
-    if (!trim_quotes) {
+    if (display_name_without_quotes === display_name) {
       return false;
     }
 
@@ -63,7 +79,6 @@ function validateDisplayName(display_name:string) {
       return false;
     }
   }
-
   return true;
 }
 
@@ -75,15 +90,25 @@ function validateDisplayName(display_name:string) {
  * @param options The options
  * @return true if the `target` is a valid email address, false otherwise
  */
-export function isEmail(str: string, options:any) {
-  assertString(str);
+export function isEmail(target: string, options?:any):Result<boolean|undefined> {
+
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_EMAIL_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
   options = merge(options, default_email_options);
 
   if (options.require_display_name || options.allow_display_name) {
-    const display_email = str.match(splitNameAddress);
+    const display_email = target.match(splitNameAddress);
     if (display_email) {
-      let display_name;
-      [, display_name, str] = display_email;
+      let display_name = display_email[1];
+
+      // Remove display name and angle brackets to get email address
+      // Can be done in the regex but will introduce a ReDOS (See  #1597 for more info)
+      target = target.replace(display_name, '').replace(/(^<|>$)/g, '');
+
       // sometimes need to trim the last space to get the display name
       // because there may be a space between display name and email address
       // eg. myname <address@gmail.com>
@@ -93,21 +118,25 @@ export function isEmail(str: string, options:any) {
       }
 
       if (!validateDisplayName(display_name)) {
-        return false;
+        return new Result(false);
       }
     } else if (options.require_display_name) {
-      return false;
+      return new Result(false);
     }
   }
-  if (!options.ignore_max_length && str.length > defaultMaxEmailLength) {
-    return false;
+  if (!options.ignore_max_length && target.length > defaultMaxEmailLength) {
+    return new Result(false);
   }
 
-  const parts = str.split('@');
-  const domain = parts.pop()!;
-  let user = parts.join('@');
+  const parts = target.split('@');
+  const domain = parts.pop();
+  const lower_domain = domain!.toLowerCase();
 
-  const lower_domain = domain.toLowerCase();
+  if (options.host_blacklist.includes(lower_domain)) {
+    return new Result(false);
+  }
+
+  let user = parts.join('@');
 
   if (options.domain_specific_validation && (lower_domain === 'gmail.com' || lower_domain === 'googlemail.com')) {
     /*
@@ -123,46 +152,48 @@ export function isEmail(str: string, options:any) {
     const username = user.split('+')[0];
 
     // Dots are not included in gmail length restriction
-    if (!isByteLength(username.replace('.', ''), { min: 6, max: 30 })) {
-      return false;
+    if (!isByteLength(username.replace(/\./g, ''), { min: 6, max: 30 })) {
+      return new Result(false);
     }
 
     const user_parts = username.split('.');
     for (let i = 0; i < user_parts.length; i++) {
       if (!gmailUserPart.test(user_parts[i])) {
-        return false;
+        return new Result(false);
       }
     }
   }
 
-  if (!isByteLength(user, { max: 64 }) ||
-    !isByteLength(domain, { max: 254 })) {
-    return false;
+  if (options.ignore_max_length === false && (
+    !isByteLength(user, { max: 64 }) ||
+    !isByteLength(domain!, { max: 254 }))
+  ) {
+    return new Result(false);
   }
 
-  if (!isFQDN(domain, { require_tld: options.require_tld })) {
+  if (!isFQDN(domain!, { require_tld: options.require_tld })) {
     if (!options.allow_ip_domain) {
-      return false;
+      return new Result(false);
     }
 
-    if (!isIP(domain)) {
-      if (!domain.startsWith('[') || !domain.endsWith(']')) {
-        return false;
+    if (!isIP(domain!)) {
+      if (!domain!.startsWith('[') || !domain!.endsWith(']')) {
+        return new Result(false);
       }
 
-      let noBracketdomain = domain.substr(1, domain.length - 2);
+      let noBracketdomain = domain!.substr(1, domain!.length - 2);
 
       if (noBracketdomain.length === 0 || !isIP(noBracketdomain)) {
-        return false;
+        return new Result(false);
       }
     }
   }
 
   if (user[0] === '"') {
     user = user.slice(1, user.length - 1);
-    return options.allow_utf8_local_part ?
+    return new Result(options.allow_utf8_local_part ?
       quotedEmailUserUtf8.test(user) :
-      quotedEmailUser.test(user);
+      quotedEmailUser.test(user));
   }
 
   const pattern = options.allow_utf8_local_part ?
@@ -171,9 +202,14 @@ export function isEmail(str: string, options:any) {
   const user_parts = user.split('.');
   for (let i = 0; i < user_parts.length; i++) {
     if (!pattern.test(user_parts[i])) {
-      return false;
+      return new Result(false);
     }
   }
+  if (options.blacklisted_chars) {
+    if (user.search(new RegExp(`[${options.blacklisted_chars}]+`, 'g')) !== -1) {
+      return new Result(false);
 
-  return true;
+    } 
+  }
+  return new Result(true);
 }

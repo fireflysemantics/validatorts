@@ -1,4 +1,16 @@
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsRFC3339Errors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_RFC3339_ERRORS: IsRFC3339Errors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 /* Based on https://tools.ietf.org/html/rfc3339#section-5.6 */
 
@@ -19,7 +31,7 @@ const partialTime = new RegExp(`${timeHour.source}:${timeMinute.source}:${timeSe
 const fullDate = new RegExp(`${dateFullYear.source}-${dateMonth.source}-${dateMDay.source}`);
 const fullTime = new RegExp(`${partialTime.source}${timeOffset.source}`);
 
-const rfc3339 = new RegExp(`${fullDate.source}[ tT]${fullTime.source}`);
+const rfc3339 = new RegExp(`^${fullDate.source}[ tT]${fullTime.source}$`);
 
 /**
  * Check if `target` is a valid RFC3339 timestamp
@@ -32,7 +44,12 @@ const rfc3339 = new RegExp(`${fullDate.source}[ tT]${fullTime.source}`);
 const isRFC3339:boolean = isRFC3339('2002-10-02T15:00:00Z')
 ```
  */
-export function isRFC3339(target:string) {
-  assertString(target);
-  return rfc3339.test(target);
+export function isRFC3339(target:string):Result<boolean|undefined>  {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_RFC3339_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
+  return new Result(rfc3339.test(target));
 }

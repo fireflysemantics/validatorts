@@ -1,4 +1,16 @@
-import { assertString } from '../util/assertString';
+import { MessageFunctionType, Result } from '../types';
+import { isString } from '../validators/isString';
+
+export interface IsIntErrors {
+  TARGET_ARGUMENT_NOT_A_STRING: MessageFunctionType;
+}
+
+export const IS_INT_ERRORS: IsIntErrors =
+{
+  TARGET_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
+    return `The target argument ${arr![0]} is not a string.`;
+  }
+};
 
 const int = /^(?:[-+]?(?:0|[1-9][0-9]*))$/;
 const intLeadingZeroes = /^[-+]?[0-9]+$/;
@@ -10,8 +22,13 @@ const intLeadingZeroes = /^[-+]?[0-9]+$/;
  * @param options The options
  * @return true if the `target` is an int, false otherwise
  */
-export function isInt(str: string, options:any) {
-  assertString(str);
+export function isInt(target: string, options:any):Result<boolean|undefined> {
+  if (!isString(target)) {
+    return new Result(
+      undefined, 
+      IS_INT_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
+      [target])
+  }
   options = options || {};
 
   // Get the regex to use for testing, based on whether
@@ -22,10 +39,10 @@ export function isInt(str: string, options:any) {
   );
 
   // Check min/max/lt/gt
-  let minCheckPassed = (!options.hasOwnProperty('min') || str >= options.min);
-  let maxCheckPassed = (!options.hasOwnProperty('max') || str <= options.max);
-  let ltCheckPassed = (!options.hasOwnProperty('lt') || str < options.lt);
-  let gtCheckPassed = (!options.hasOwnProperty('gt') || str > options.gt);
+  let minCheckPassed = (!options.hasOwnProperty('min') || target >= options.min);
+  let maxCheckPassed = (!options.hasOwnProperty('max') || target <= options.max);
+  let ltCheckPassed = (!options.hasOwnProperty('lt') || target < options.lt);
+  let gtCheckPassed = (!options.hasOwnProperty('gt') || target > options.gt);
 
-  return regex.test(str) && minCheckPassed && maxCheckPassed && ltCheckPassed && gtCheckPassed;
+  return new Result(regex.test(target) && minCheckPassed && maxCheckPassed && ltCheckPassed && gtCheckPassed);
 }
