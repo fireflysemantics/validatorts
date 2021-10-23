@@ -74,7 +74,7 @@ Run the Jest Tests for ValidatorTS
 
 ## Browse Typedoc
 
-[Typedoc](https://fireflysemantics.github.io/validatorts/doc/)
+[Typedoc](https://fireflysemantics.github.io/validatorts/)
 
 ## Generate Typedoc 
 

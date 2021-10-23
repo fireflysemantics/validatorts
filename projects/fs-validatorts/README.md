@@ -19,8 +19,6 @@ const portNumber:boolean = isPort('4200').value
 console.log(isPortNumber)
 ```
 
-
-
 # Error Handling
 
 Each validator returns a `Result` with this interface:
@@ -76,7 +74,7 @@ Run the Jest Tests for ValidatorTS
 
 ## Browse Typedoc
 
-[Typedoc](https://fireflysemantics.github.io/validatorts/doc/)
+[Typedoc](https://fireflysemantics.github.io/validatorts/)
 
 ## Generate Typedoc 
 
