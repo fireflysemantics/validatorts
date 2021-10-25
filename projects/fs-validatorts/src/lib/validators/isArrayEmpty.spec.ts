@@ -8,7 +8,7 @@ test("isArrayEmpty", ()=>{
 
 const testdata: TestData[] = [
     {
-        it: 'isArray',
+        it: 'isArrayEmtpy',
         valid: [[]],
         invalid: [["a"]]
       }

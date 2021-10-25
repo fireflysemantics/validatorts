@@ -16,7 +16,6 @@ export const IS_GREATER_THAN_FINITE_ERRORS: IsGreaterThanFiniteErrors =
   }
 };
 
-
 /**
  * Checks that both `greater` and `than` are finite whether greater > than is true.
  * @param greater The value being checked.

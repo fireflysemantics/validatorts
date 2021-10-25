@@ -5,7 +5,7 @@ export interface IsArrayUniqueErrors {
     TARGET_ARGUMENT_NOT_AN_ARRAY: MessageFunctionType;
 }
 
-export const IS_ARRAY_EMPTY_ERRORS: IsArrayUniqueErrors =
+export const IS_ARRAY_UNIQUE_ERRORS: IsArrayUniqueErrors =
 {
     TARGET_ARGUMENT_NOT_AN_ARRAY: (arr?: string[]) => {
         return `The target argument ${arr![0]} is not an array.`;
@@ -23,7 +23,7 @@ export const IS_ARRAY_EMPTY_ERRORS: IsArrayUniqueErrors =
     if (!isArray(target).value) {
         return new Result(
             undefined,
-            IS_ARRAY_EMPTY_ERRORS.TARGET_ARGUMENT_NOT_AN_ARRAY,
+            IS_ARRAY_UNIQUE_ERRORS.TARGET_ARGUMENT_NOT_AN_ARRAY,
             [target.toString()])
     }
   

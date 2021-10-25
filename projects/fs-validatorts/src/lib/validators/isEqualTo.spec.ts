@@ -1,9 +1,9 @@
 import { TestData } from '../types/TestData'
 import { runtest } from '../util/test-util'
-import { equals } from './equals'
+import { isEqualTo } from './isEqualTo'
 
 test('equals', () => {
-    runtest(testdata, equals)
+    runtest(testdata, isEqualTo)
 })
 const testdata: TestData[] = [
     {
