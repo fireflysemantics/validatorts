@@ -12,7 +12,12 @@ export const TO_FLOAT_ERRORS: ToFloatErrors =
   }
 };
 
-
+/**
+ * Convert the input string to a float, 
+ * or NaN if the input is not a float.
+ * 
+ * @param target The target
+ */
 export function toFloat(target:string):Result<number | undefined> {
   if (!isFloat(target)) {
     return new Result(

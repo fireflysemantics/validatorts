@@ -19,6 +19,13 @@ export const TRIM_ERRORS: TrimErrors =
   }
 };
 
+/**
+ * Trim characters (whitespace by default) 
+ * from both sides of the input.
+ * 
+ * @param target The target
+ * @param chars The characters
+ */
 export function trim(target:string, chars:string):Result<string|undefined> {
   if (!isString(target)) {
     return new Result(

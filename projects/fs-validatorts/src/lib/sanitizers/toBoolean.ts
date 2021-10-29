@@ -17,9 +17,9 @@ export const TO_BOOLEAN_ERRORS: ToBooleanErrors =
  * Everything except for '0', 
  * 'false' and '' returns true. 
  * In strict mode only '1' and 'true' return true.
+ * 
  * @param target 
  * @param strict 
- * @returns 
  */
 export function toBoolean(target:string, strict:boolean):Result<boolean | undefined> {
   if (!isString(target)) {

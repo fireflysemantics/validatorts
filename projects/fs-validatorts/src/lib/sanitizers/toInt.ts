@@ -12,6 +12,13 @@ export const TO_INT_ERRORS: ToIntErrors =
   }
 };
 
+/**
+ * Convert the input string to an integer, 
+ * or NaN if the input is not an integer.
+ * 
+ * @param target 
+ * @param radix 
+ */
 export function toInt(target:string, radix:number):Result<number|undefined> {
   if (!isInt(target, radix)) {
     return new Result(

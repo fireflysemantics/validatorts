@@ -179,6 +179,12 @@ function dotsReplacer(match:string) {
   return '';
 }
 
+/**
+ * See the [Validator normalizeEmail Documentation](https://www.npmjs.com/package/validator)
+ * 
+ * @param email The email address
+ * @param options The options
+ */
 export function normalizeEmail(email:string, options:any):Result<string|undefined> {
   options = merge(options, default_normalize_email_options);
 

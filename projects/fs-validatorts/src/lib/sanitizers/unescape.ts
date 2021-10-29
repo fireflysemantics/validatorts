@@ -12,6 +12,11 @@ export const UNESCAPE_ERRORS: UnescapeErrors =
   }
 };
 
+/**
+ * Replaces HTML encoded entities with <, >, &, ', " and /.
+ * 
+ * @param target The target
+ */
 export function unescape(target:string):Result<string | undefined> {
   if (!isString(target)) {
     return new Result(

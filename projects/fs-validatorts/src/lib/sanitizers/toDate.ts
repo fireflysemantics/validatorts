@@ -16,6 +16,12 @@ export const TO_DATE_ERRORS: ToDateErrors =
   }
 };
 
+/**
+ * Convert the input string to a date, 
+ * or null if the input is not a date.
+ * 
+ * @param target The target
+ */
 export function toDate(target: string):Result<Date | undefined> {
   if (!isString(target)) {
     return new Result(

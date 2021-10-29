@@ -16,6 +16,12 @@ export const LTRIM_ERRORS: LTrimErrors =
   }
 };
 
+/**
+ * Trim characters from the left-side of the input.
+ * 
+ * @param target The target
+ * @param chars The characters to trim
+ */
 export function ltrim(target:string, chars:string):Result<string|undefined> {
   if (!isString(target)) {
     return new Result(

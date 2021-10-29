@@ -16,6 +16,18 @@ export const BLACKLIST_ERRORS: BlacklistErrors =
   }
 };
 
+/**
+ * Remove characters that appear
+ * in the blacklist. 
+ * 
+ * Since the characters are used in a RegExp, some special 
+ * characters must be escaped.
+ * 
+ * For example slashes `blacklist(input, '\\[\\]')`.
+ * 
+ * @param target 
+ * @param chars
+ */
 export function blacklist(target: string, chars: string): Result<string|undefined> {
   if (!isString(target)) {
     return new Result(

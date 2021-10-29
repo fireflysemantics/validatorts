@@ -17,6 +17,11 @@ export const RTRIM_ERRORS: RTrimErrors =
 };
 
 
+/**
+ * 
+ * @param target The target
+ * @param chars The charachters
+ */
 export function rtrim(target:string, chars:string):Result<string|undefined> {
   if (!isString(target)) {
     return new Result(
