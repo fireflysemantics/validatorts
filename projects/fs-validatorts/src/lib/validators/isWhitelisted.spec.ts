@@ -10,6 +10,6 @@ const testdata: TestData[] = [
         it: 'isWhitelisted',
         args: ['abcdefghijklmnopqrstuvwxyz-'],
         valid: ['foo', 'foobar', 'baz-foo'],
-        invalid: ['foo bar', 'fo.bar', 'türkçe'],
+        invalid: ['foo bar', 'fo.bar', 'türkçe']
     }
 ]

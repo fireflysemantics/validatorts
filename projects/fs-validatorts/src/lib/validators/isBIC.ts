@@ -16,10 +16,13 @@ const isBICReg = /^[A-z]{4}[A-z]{2}\w{2}(\w{3})?$/;
 
 
 /**
- * Checks whether the `target` is BIC encoded
+ * Tests whether the `target` is BIC encoded
  * 
+ * ### Example
+ * ```
+ * expect(isBIC(SBICKEN1).value).toBeTruthy()
+ * ```
  * @param target The target string
- * @return true if the `target` is BIC encoded, false otherwise
  */
 export function isBIC(target: string):Result<boolean|undefined> {
   if (!isString(target)) {

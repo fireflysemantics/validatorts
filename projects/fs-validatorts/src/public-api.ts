@@ -1,6 +1,22 @@
 /*
  * Public API Surface of validatorjs
  */
+export * from './lib/validators/isSameInstant'
+export * from './lib/validators/isInObjectValues'
+export * from './lib/validators/isInObjectKeys'
+export * from './lib/validators/isInArray'
+export * from './lib/validators/isNotSuperString'
+export * from './lib/validators/isSuperString'
+export * from './lib/validators/isSubString'
+export * from './lib/validators/isNumber'
+export * from './lib/validators/isNotEmpty'
+export * from './lib/validators/isNotSubString'
+export * from './lib/validators/isNotEqualTo'
+export * from './lib/validators/isNegative'
+export * from './lib/validators/isLessThanFinite'
+export * from './lib/validators/isMatch'
+export * from './lib/validators/isMilitaryTime'
+export * from './lib/validators/isInstanceOf'
 export * from './lib/validators/isDefined'
 export * from './lib/validators/isInRange'
 export * from './lib/validators/isArraySizeGreaterThan'
@@ -22,7 +38,6 @@ export * from './lib/validators/isBase32'
 export * from './lib/validators/isBase64'
 export * from './lib/validators/isBefore'
 export * from './lib/validators/isBIC'
-export * from './lib/validators/isBoolean'
 export * from './lib/validators/isBooleanString'
 export * from './lib/validators/isBtcAddress'
 export * from './lib/validators/isByteLength'
@@ -46,7 +61,6 @@ export * from './lib/validators/isHexColor'
 export * from './lib/validators/isHSL'
 export * from './lib/validators/isIBAN'
 //export * from './lib/validators/isIdentityCard'
-export * from './lib/validators/isIn'
 export * from './lib/validators/isInt'
 export * from './lib/validators/isIP'
 export * from './lib/validators/isISBN'
@@ -109,5 +123,4 @@ export * from "./lib/validators/isNonNegativeFinite"
 export * from "./lib/validators/isNonNegativeFinite"
 export * from "./lib/validators/isFiniteNumber"
 export * from "./lib/validators/isFiniteInteger"
-export * from "./lib/validators/isNumberInRange"
 export * from "./lib/validators/isGreaterThanFinite"

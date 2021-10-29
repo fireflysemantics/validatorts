@@ -82,9 +82,12 @@ function checkHost(host:any, matches:any) {
 /**
  * Checks whether the `target` string is valid URL
  * 
+ * ### Example
+ * ```
+ * expect((isURL('foobar.com').value).toBeTruthy()
+ * ```
  * @param url The target string
  * @param options The options
- * @return true if the `target` is a valid URL, false otherwise
  */
 export function isURL(url:string, options:any):Result<boolean|undefined>  {
   if (!isString(url)) {

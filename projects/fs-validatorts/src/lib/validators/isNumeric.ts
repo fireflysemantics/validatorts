@@ -17,10 +17,13 @@ const numericNoSymbols = /^[0-9]+$/;
 
 /**
  * Checks whether the `target` string contains only numbers
- * 
- * @param target The target string
+ *    
+ * ### Example
+ * ```
+ * expect(isNumeric('123').value).toBeTruthy()
+ * ```
+ * @param target The target
  * @param options The options
- * @return true if the `target` contains only numbers, false otherwise
  */
 export function isNumeric(target:string, options:any):Result<boolean|undefined>  {
   if (!isString(target)) {

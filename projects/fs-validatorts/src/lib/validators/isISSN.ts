@@ -15,11 +15,14 @@ export const IS_ISSN_ERRORS: IsISSNErrors =
 const issn = '^\\d{4}-?\\d{3}[\\dX]$';
 
 /**
- * Checks whether the `target` string is a valid ISSN
- * 
- * @param target The target string
+ * Tests whether the `target` string is a valid ISSN
+ *
+ * ### Example
+ * ```
+ * expect(isISSN('0378-5955').value).toBeTruthy()
+ * ```
+ * @param target The target
  * @param options The options
- * @return true if the `target` is a valid ISSN, false otherwise
  */
 export function isISSN(target: string, options: any = {}): Result<boolean | undefined> {
   if (!isString(target)) {

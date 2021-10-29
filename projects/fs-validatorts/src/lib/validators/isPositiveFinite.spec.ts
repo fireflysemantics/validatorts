@@ -5,6 +5,7 @@ describe("isPositiveFinite", () => {
 
   it(`should be positive finite`, () => {
     expect(isPositiveFinite(4).value).toBeTruthy();
+    expect(isPositiveFinite(4.4).value).toBeTruthy();
   });
   it(`should not be positive finite`, () => {
     expect(isPositiveFinite(-0).value).toBeFalsy();

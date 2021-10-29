@@ -38,7 +38,7 @@
 /**
  * Get position weight given:
  * EAN length and digit index/position
- *
+ * 
  * @param length The EAN length
  * @param index The index/position
  * @return The the position weight
@@ -47,7 +47,6 @@ function getPositionWeightThroughLengthAndIndex(length:number, index:number) {
   if (length === LENGTH_EAN_8 || length === LENGTH_EAN_14) {
     return (index % 2 === 0) ? 3 : 1;
   }
-
   return (index % 2 === 0) ? 1 : 3;
 }
 
@@ -71,12 +70,17 @@ function getPositionWeightThroughLengthAndIndex(length:number, index:number) {
 }
 
 /**
- * Check if string is valid EAN:
+ * Test if string is valid EAN:
  * Matches EAN-8/EAN-13 regex
  * Has valid check digit.
  * 
- * @param target The target string
- * @return true if the `target` is a valid EAN, false otherwise
+ *    
+ * ### Example
+ * ```
+ * expect(isEAN('9421023610112').value).toBeTruthy()
+ * ```
+ * 
+ * @param target The target
  */
  export function isEAN(target: string):Result<boolean | undefined> {
   if (!isString(target)) {

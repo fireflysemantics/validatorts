@@ -15,27 +15,22 @@ export const IS_LENGTH_ERRORS: IsLengthErrors =
 /* eslint-disable prefer-rest-params */
 
 /**
- * Checks whether the `target` string length is valid
- * 
- * @param target The target string
- * @param options The options
- * @return true if the `target` has a valid length, false otherwise
+ * Tests whether the `target` string length is valid
+ *    
+ * ### Example
+ * ```
+ * expect(isLength('abcd', 2).value).toBeTruthy()
+ * ```
+ * @param target The target
+ * @param min The minimum length
+ * @param max The maximum length - Infinity if not defined
  */
-export function isLength(target:string, options:any):Result<boolean|undefined>  {
+export function isLength(target:string, min: number = 0, max: number = Infinity):Result<boolean|undefined>  {
   if (!isString(target)) {
     return new Result(
       undefined, 
       IS_LENGTH_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
       [target])
-  }
-  let min;
-  let max;
-  if (typeof (options) === 'object') {
-    min = options.min || 0;
-    max = options.max;
-  } else { // backwards compatibility: isLength(str, min [, max])
-    min = arguments[1] || 0;
-    max = arguments[2];
   }
   const surrogatePairs = target.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g) || [];
   const len = target.length - surrogatePairs.length;

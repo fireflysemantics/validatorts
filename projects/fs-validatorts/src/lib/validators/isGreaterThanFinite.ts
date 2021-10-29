@@ -17,10 +17,15 @@ export const IS_GREATER_THAN_FINITE_ERRORS: IsGreaterThanFiniteErrors =
 };
 
 /**
- * Checks that both `greater` and `than` are finite whether greater > than is true.
+ * Tests that both `greater` and `than` are finite whether greater > than is true.
+ *    
+ * ### Example
+ * ```
+ * expect(isGreaterThanFinite(11,10).value).toBeTruthy()
+ * ```
+ * 
  * @param greater The value being checked.
  * @param than The target value to perform the check against.
- * @return True if the value is greater than the target, false otherwise.
  */
 export function isGreaterThanFinite(greater: number, than: number): Result<boolean | undefined> {
     if (!isNumber(greater).value) {

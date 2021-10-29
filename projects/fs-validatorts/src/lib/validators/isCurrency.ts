@@ -103,13 +103,16 @@ export interface IsCurrencyOptions {
 }
 
 /**
- * Checks whether the `target` string is a currency
- * 
+ * Tests whether the `target` string is a currency
+ *    
+ * ### Example
+ * ```
+ * expect(isCurrency('1.39').value).toBeTruthy()
+ * ```
  * @param target The target string
  * @param options The options
- * @return true if the `target` is a currency, false otherwise
  */
-export function isCurrency(target: string, options:any):Result<boolean|undefined> {
+export function isCurrency(target: string, options:any = default_currency_options):Result<boolean|undefined> {
   if (!isString(target)) {
     return new Result(
       undefined, 

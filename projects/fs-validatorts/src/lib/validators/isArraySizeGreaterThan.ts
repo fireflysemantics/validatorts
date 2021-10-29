@@ -14,12 +14,15 @@ export const IS_ARRAY_SIZE_GREATER_THAN_ERRORS: IsArraySizeGreaterThanErrors =
 
 
 /**
- * Checks if array's length is greater than the target number.
- * If null or undefined is given then this function returns false.
+ * Tests if the `array`'s length is greater 
+ * than the `constraint` number.
  * 
- * @param array The value array being checked.
- * @param constraint The minimum size of the array
- * @returns True if array's length is greater than the target number, false otherwise.
+ * ### Example
+ * ```
+ * expect(isArraySizeGreaterThan([1,2], 1).value).toBeTruthy()
+ * ```
+ * @param array The array being checked.
+ * @param constraint The size constraint
  */
 export function isArraySizeGreaterThan(array: any[], constraint: number):Result<boolean|undefined> {
     if (!isArray(array).value) {

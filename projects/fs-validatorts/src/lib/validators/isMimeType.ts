@@ -46,9 +46,12 @@ const mimeTypeMultipart = /^multipart\/[a-zA-Z0-9\.\-\+]{1,100}(;\s?(boundary|ch
 
 /**
  * Checks whether the `target` string is a valid Mime Type
- * 
+ *    
+ * ### Example
+ * ```
+ * expect(isMimeType('application/json').value).toBeTruthy()
+ * ```
  * @param target The target string
- * @return true if the `target` is a valid Mime Type, false otherwise
  */
 export function isMimeType(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

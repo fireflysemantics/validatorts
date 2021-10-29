@@ -20,17 +20,23 @@ const long = /^\s?[+-]?(180(\.0+)?|1[0-7]\d(\.\d+)?|\d{1,2}(\.\d+)?)\)?$/;
 const latDMS = /^(([1-8]?\d)\D+([1-5]?\d|60)\D+([1-5]?\d|60)(\.\d+)?|90\D+0\D+0)\D+[NSns]?$/i;
 const longDMS = /^\s*([1-7]?\d{1,2}\D+([1-5]?\d|60)\D+([1-5]?\d|60)(\.\d+)?|180\D+0\D+0)\D+[EWew]?$/i;
 
+export interface IsLatLongOptions {
+  checkDMS:boolean
+}
 const defaultLatLongOptions = {
   checkDMS: false,
 };
 
 /**
- * Checks whether the `target` string is a valid LatLong
- * 
+ * Tests whether the `target` string is a valid LatLong
+ *    
+ * ### Example
+ * ```
+ * expect(isLatLong('(-17.738223, 85.605469)').value).toBeTruthy()
+ * ```
  * @param target The target string
- * @return true if the `target` is a valid LatLong, false otherwise
  */
-export function isLatLong(target: string, options:any): Result<boolean | undefined> {
+export function isLatLong(target: string, options:IsLatLongOptions = defaultLatLongOptions): Result<boolean | undefined> {
   if (!isString(target)) {
     return new Result(
       undefined,

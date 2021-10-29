@@ -15,8 +15,12 @@ export const IS_POSITIVE_FINITE_ERRORS: IsPositiveFiniteErrors =
 
 /**
  * Checks if the value is > 0 and finite.
+ *    
+ * ### Example
+ * ```
+ * expect(isPositiveFinite(4.4).value).toBeTruthy()
+ * ```
  * @param target The value being checked.
- * @return True if the value is a finite number and is positive, false otherwise.
  */
 export function isPositiveFinite(target: number): Result<boolean | undefined> {
   if (!isNumber(target).value) {

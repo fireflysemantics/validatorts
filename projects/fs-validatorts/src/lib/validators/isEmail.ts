@@ -28,6 +28,8 @@ export interface IsEmailOptions {
   blacklisted_chars: string,
   ignore_max_length: boolean,
   host_blacklist: any[],
+  domain_specific_validation:boolean
+  allow_ip_domain:boolean
 }
 
 const default_email_options:IsEmailOptions = {
@@ -38,6 +40,8 @@ const default_email_options:IsEmailOptions = {
   blacklisted_chars: '',
   ignore_max_length: false,
   host_blacklist: [],
+  domain_specific_validation:false,
+  allow_ip_domain:false
 };
 
 /* eslint-disable max-len */
@@ -84,13 +88,17 @@ function validateDisplayName(display_name:string) {
 
 
 /**
- * Checks whether the `target` string is a valid email address
+ * Tests whether the `target` string is a valid email address
+ *    
+ * ### Example
+ * ```
+ * expect(isEmail('foo@bar.com').value).toBeTruthy()
+ * ```
  * 
- * @param target The target string
+ * @param target The target
  * @param options The options
- * @return true if the `target` is a valid email address, false otherwise
  */
-export function isEmail(target: string, options?:any):Result<boolean|undefined> {
+export function isEmail(target: string, options:IsEmailOptions = default_email_options):Result<boolean|undefined> {
 
   if (!isString(target)) {
     return new Result(

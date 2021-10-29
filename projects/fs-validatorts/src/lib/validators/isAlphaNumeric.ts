@@ -26,12 +26,15 @@ export const IS_ALPHA_NUMERIC_ERRORS: IsAlphaNumericErrors =
 };
 
 /**
- * Checks whether `target` is in alphanumeric and if so validates whether
- * the `target` string conforms to the `locale`.
+ * Tests whether `target` is in alphanumeric
+ * 
+ * ### Example
+ * ```
+ * expect(isAlphaNumeric('abc123').value).toBeTruthy()
+ * ```
  * 
  * @param _target The target string
  * @param locale The locale (Defaults to 'en-US') 
- * @return true if the `target` string conforms to the `arg` locale, false otherwise
  */
 export function isAlphaNumeric(_target: string, locale: string = 'en-US', options:any = {}):Result<boolean|undefined> {
   if (!isString(_target)) {

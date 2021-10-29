@@ -18,10 +18,13 @@ const default_json_options = {
 };
 
 /**
- * Checks whether the `target` string is valid JSON
- * 
+ * Tests whether the `target` string is valid JSON
+ *    
+ * ### Example
+ * ```
+ * expect(isJSON('{ "key": "value" }').value).toBeTruthy()
+ * ```
  * @param target The target string
- * @return true if the `target` is a valid ISSN, false otherwise
  */
 export function isJSON(target: string, options: any): Result<boolean | undefined> {
   if (!isString(target)) {

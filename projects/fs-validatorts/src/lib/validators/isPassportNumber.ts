@@ -70,10 +70,13 @@ const passportRegexByCountryCode:StringKeyRegEx = {
 /**
  * Check if `target` is a valid passport number
  * relative to provided `arg` ISO Country Code.
- *
+ * 
+ * ### Example
+ * ```
+ * expect(isPassportNumber('AF0549358', 'AM').value).toBeTruthy()
+ * ```
  * @param target The passport number
  * @param countryCode The country code
- * @return true if the `target` is a passport number, false otherwise
  */
 export function isPassportNumber(target:string, countryCode:string):Result<boolean|undefined>  {
   if (!isString(target)) {

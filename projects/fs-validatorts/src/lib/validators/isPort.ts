@@ -15,14 +15,18 @@ export const IS_PORT_ERRORS: IsPortErrors =
 
 /**
  * Check if `target` is a valid port number
+ *    
+ * ### Example
+ * ```
+ * expect(().value).toBeTruthy()
+ * ```
  *
  * @param target The port number
- * @return true if the `target` is a port number, false otherwise
  * 
- * @example
-```
-const isPortNumber:boolean = isPort('4200')
-```
+ * ### Example 
+ *
+ * expect(isPort('4200').value).toBeTruthy() 
+ *
  */
 export function isPort(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

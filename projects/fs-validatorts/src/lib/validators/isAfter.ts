@@ -17,11 +17,14 @@ export const IS_AFTER_ERRORS: IsAfterErrors =
 };
 
 /**
- * Checks whether the `target` date comes after the `arg` date
+ * Tests whether the `after` date comes after the `before` date
  * 
+ * ### Example
+ * ```
+ * expect(isAfter(new Date(1), new Date(0)).value).toBeTruthy()
+ * ```
  * @param after The target date
  * @param before The argument to perform the comparison with 
- * @return true if the `after` date comes after the `before` date, false otherwise
  */
 export function isAfter(after: Date, before: Date):Result<boolean | undefined> {
   if (!isDate(after).value) {

@@ -22,10 +22,13 @@ const uuid:StringKeyRegEx = {
 
 /**
  * Checks whether the `target` is a valid UUID
- * 
+ *    
+ * ### Example
+ * ```
+ * expect(isUUID('A987FBC9-4BED-3078-CF07-9141BA07C9F3').value).toBeTruthy()
+ * ```
  * @param target The target string
  * @param version The version
- * @return true if the `target` is  a valid UUID, false otherwise
  */
 export function isUUID(target:string, version?:string):Result<boolean|undefined>  {
   version = version ? version : 'all'

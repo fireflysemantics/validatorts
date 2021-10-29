@@ -14,6 +14,7 @@
     "b": "ng build fs-validatorts",
     "p": "cp README.md ./projects/fs-validatorts && npm run bp && npm run b && cd dist/fs-validatorts/ && npm publish",
     "doc": "rm -fr doc && typedoc --entryPointStrategy expand ./projects/fs-validatorts/src/lib --out doc --exclude **/*.spec.ts",
+    "sdoc": "npm run doc && http-server -o doc",
     "d": "npm run doc && node deploy.js"
   },
   "private": true,

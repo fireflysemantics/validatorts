@@ -19,7 +19,12 @@ const validAttribute = /^[a-z\-]+=[a-z0-9\-]+$/i;
 const validData = /^[a-z0-9!\$&'\(\)\*\+,;=\-\._~:@\/\?%\s]*$/i;
 
 /**
- * Checks whether the `target` string is a data URI
+ * Tests whether the `target` string is a data URI
+ *    
+ * ### Example
+ * ```
+ * expect(isDataURI('data:,A%20brief%20note').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
  * @param options The options

@@ -18,10 +18,13 @@ const macAddressWithDots = /^([0-9a-fA-F]{4}\.){2}([0-9a-fA-F]{4})$/;
 
 /**
  * Checks whether the `target` string is a valid MAC Address
- * 
+ *    
+ * ### Example
+ * ```
+ * expect(isMACAddress('ab:ab:ab:ab:ab:ab').value).toBeTruthy()
+ * ```
  * @param target The target string
  * @param options The options
- * @return true if the `target` is a valid Mac Address, false otherwise
  */
 export function isMACAddress(target:string, options:any):Result<boolean|undefined>  {
   if (!isString(target)) {

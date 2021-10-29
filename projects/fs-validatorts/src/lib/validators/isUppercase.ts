@@ -15,10 +15,12 @@ export const IS_UPPERCASE_ERRORS: IsUppercaseErrors =
 
 
 /**
- * Check if `target` is uppercase
- *
+ * Check if `target` is uppercase   
+ * ### Example
+ * ```
+ * expect(isUppercase('ABC').value).toBeTruthy()
+ * ```
  * @param target The target
- * @return true if the `target` is uppercase, false otherwise
  */
 export function isUppercase(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

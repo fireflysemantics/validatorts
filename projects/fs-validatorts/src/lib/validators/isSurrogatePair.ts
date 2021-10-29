@@ -15,10 +15,13 @@ export const IS_SURROGATE_PAIR_ERRORS: IsSurrogatePairErrors =
 const surrogatePair = /[\uD800-\uDBFF][\uDC00-\uDFFF]/;
 
 /**
- * Check if `target` is a valid surrogate pair
- *
+ * Test whether the string contains any surrogate pairs chars.
+ *   
+ * ### Example
+ * ```
+ * expect(isSurrogatePair('ABC千𥧄1-2-3').value).toBeTruthy()
+ * ```
  * @param target The target
- * @return true if the `target` a valid surrogate pair, false otherwise
  */
 export function isSurrogatePair(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

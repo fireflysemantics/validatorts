@@ -49,10 +49,14 @@ const isValidDate = (str:string) => {
 };
 /**
  * Checks whether the `target` string is a valid ISO8601 date
+ *    
+ * ### Example
+ * ```
+ * expect(isISO8601('2009-05-19').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
  * @param options The options
- * @return true if the `target` is a valid ISO8601 date, false otherwise
  */
 export function isISO8601(target:string, options?:any):Result<boolean|undefined>  {
   if (!isString(target)) {

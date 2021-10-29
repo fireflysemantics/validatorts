@@ -82,21 +82,24 @@ export const postalCodeLocales = Object.keys(patterns);
 
 /**
  * Checks whether the `target` string is a valid postal code
- * 
+ *    
+ * ### Example
+ * ```
+ * expect(isPostalCode().value).toBeTruthy()
+ * ```
  * @param target The target string
- * @param local The locale
- * @return true if the `target` is a valid postal code, false otherwise
+ * @param locale The locale
  */
-export function isPostalCode(target:string, local:string):Result<boolean|undefined>  {
+export function isPostalCode(target:string, locale:string):Result<boolean|undefined>  {
   if (!isString(target)) {
     return new Result(
       undefined, 
       IS_POSTAL_CODE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
       [target])
   }
-  if (local in patterns) {
-    return new Result(patterns[local].test(target));
-  } else if (local === 'any') {
+  if (locale in patterns) {
+    return new Result(patterns[locale].test(target));
+  } else if (locale === 'any') {
     for (const key in patterns) {
       // https://github.com/gotwarlost/istanbul/blob/master/ignoring-code-for-coverage.md#ignoring-code-for-coverage-purposes
       // istanbul ignore else
@@ -112,5 +115,5 @@ export function isPostalCode(target:string, local:string):Result<boolean|undefin
   return new Result(
     undefined, 
     IS_POSTAL_CODE_ERRORS.INVALID_LOCALE,
-    [local])
+    [locale])
 }

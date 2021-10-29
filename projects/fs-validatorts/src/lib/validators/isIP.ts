@@ -50,11 +50,15 @@ export const IS_IP_ERRORS: IsIPErrors =
      ')(%[0-9a-zA-Z-.:]{1,})?$');
 
 /**
- * Checks whether the `target` string is an int
+ * Tests whether the `target` string is an int
+ *    
+ * ### Example
+ * ```
+ * expect(isIP('127.0.0.1').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
  * @param version The version
- * @return true if the `target` is an int, false otherwise
  */
 
  export function isIP(target:string, version:string=''):Result<boolean | undefined> {

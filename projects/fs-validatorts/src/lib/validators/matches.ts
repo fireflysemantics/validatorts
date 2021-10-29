@@ -14,10 +14,14 @@ export const IS_MATCHES_ERRORS: IsMatchesErrors =
 
 /**
  * Check whether the target matches the pattern
+ *    
+ * ### Example
+ * ```
+ * expect(matches('abc', 'abc').value).toBeTruthy()
+ * ```
  * @param target The target
  * @param pattern The RegExp
  * @param modifiers The optional modifier
- * @return true if the target matches, false otherwise
  */
 export function matches(target:string, pattern:RegExp, modifiers?:string):Result<boolean|undefined> {
   if (!isString(target)) {

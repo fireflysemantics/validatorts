@@ -28,8 +28,12 @@ const semanticVersioningRegex = multilineRegexp([
 /**
  * Check if `target` is a valid semver version
  *
+   
+ * ### Example
+ * ```
+ * expect(isSemVer('1.2.3').value).toBeTruthy()
+ * ```
  * @param target The target
- * @return true if the `target` is a valid semver version, false otherwise
  */
 export function isSemVer(target: string): Result<boolean | undefined> {
   if (!isString(target)) {

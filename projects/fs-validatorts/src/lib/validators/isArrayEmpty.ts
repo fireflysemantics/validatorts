@@ -13,9 +13,14 @@ export const IS_ARRAY_EMPTY_ERRORS: IsArrayEmptyErrors =
 };
 
 /**
- * Checks if an array contains any items.
+ * Tests if an array is empty.
+ * 
+ * ### Example  
+ * ```
+ * expect(isArrayEmpty([]).value).toBeTruthy()
+ * ```
+ * 
  * @param target The array being checked
- * @return True if the array is empty and false otherwise.
  */
 export function isArrayEmpty(target: any[]): Result<boolean | undefined> {
     if (!isArray(target).value) {

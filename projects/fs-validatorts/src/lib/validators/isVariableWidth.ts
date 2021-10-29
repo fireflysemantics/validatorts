@@ -16,10 +16,15 @@ import { fullWidth } from './isFullWidth';
 import { halfWidth } from './isHalfWidth';
 
 /**
- * Checks whether the `target` is variable width
+ * Test whether the string contains 
+ * a mixture of full and half-width chars.
+ * 
+ * ### Example
+ * ```
+ * expect(('Ｆｶﾀｶﾅﾞﾬ').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
- * @return true if the `target` is variable width, false otherwise
  */
 export function isVariableWidth(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

@@ -2,8 +2,12 @@ import { Result } from "../types";
 
 /**
  * Checks if argument is a real string.
+ *    
+ * ### Example
+ * ```
+ * expect(isString('foo').value).toBeTruthy()
+ * ```
  * @param value The value being checked.
- * @return True if the value is a string, false otherwise.
  * 
  */
  export function isString(value: any): Result<boolean | undefined> {

@@ -17,9 +17,12 @@ const isin = /^[A-Z]{2}[0-9A-Z]{9}[0-9]$/;
 
 /**
  * Test whether the target string is an ISBN number.
- * 
+ *    
+ * ### Example
+ * ```
+ * expect(isISIN('AU0000XVGZA3').value).toBeTruthy()
+ * ```
  * @param target The string
- * @return true if the `target` string is an ISIN number, false otherwise
  */
 export function isISIN(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

@@ -14,9 +14,12 @@ export const IS_LOWERCASE_ERRORS: IsLowercaseErrors =
 
 /**
  * Checks whether the `target` string is lowercase
- * 
+ *    
+ * ### Example
+ * ```
+ * expect(isLowercase('abc').value).toBeTruthy()
+ * ```
  * @param target The target string
- * @return true if the `target` is lowercase, false otherwise
  */
 export function isLowercase(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

@@ -11,6 +11,12 @@ const testdata: TestData[] = [
     },
     {
         it: 'isByteLength',
+        args: [{min: 2, max: 3}],
+        valid: ['abc', 'de', 'ｇ'],
+        invalid: ['', 'a', 'abcd', 'ｇｍ']
+    },
+    {
+        it: 'isByteLength',
         args: [0, 0],
         valid: [''],
         invalid: ['ｇ', 'a']

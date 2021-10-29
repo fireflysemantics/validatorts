@@ -1,5 +1,4 @@
 import { merge } from '../util/merge';
-
 import { MessageFunctionType, Result } from '../types';
 import { isString } from '../validators/isString';
 
@@ -32,11 +31,15 @@ const default_fqdn_options: IsFQDNOptions = {
 };
 
 /**
- * Checks whether the `target` string is a FQDN
+ * Tests whether the `target` string is a FQDN
  * 
  * @param target The target string
  * @param options The options
- * @return true if the `target` is a FQDN, false otherwise
+ *    
+ * ### Example
+ * ```
+ * expect(isFQDN('domain.com').value).toBeTruthy()
+ * ```
  */
 export function isFQDN(target: string, options: any): Result<boolean | undefined> {
   if (!isString(target)) {

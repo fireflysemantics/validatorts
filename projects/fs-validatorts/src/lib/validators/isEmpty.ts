@@ -18,13 +18,17 @@ const default_is_empty_options = {
 };
 
 /**
- * Checks whether the `target` string is empty
+ * Tests whether the `target` string is empty
+ *    
+ * ### Example
+ * ```
+ * expect(isEmpty('').value).toBeTruthy()
+ * ```
  * 
  * Note that `ignore_whitespace` is false by default.
  * 
  * @param target The target string
  * @param options The options
- * @return true if the `target` is empty
  */
 export function isEmpty(target: string, options:any):Result<boolean | undefined> {
   if (!isString(target)) {

@@ -21,13 +21,18 @@ export const IS_IN_RANGE_ERRORS: IsInRangeErrors =
 };
 
 /**
- * Checks if the string's length falls in a range. Note: this function takes into account surrogate pairs.
+ * Tests if the string's length falls in a range. Note: this function takes into account surrogate pairs.
  * If given value is not a string, then it returns false.
+ *    
+ * ### Example
+ * ```
+ * expect(isInRange(2,1,3).value).toBeTruthy()
+ * ```
+ * 
  * 
  * @param value The value being checked.
  * @param min The min value to perform the check against.
  * @param max The max value to perform the check against, infinity if not defined.
- * @return True if the check passes, false otherwise.
  */
 export function isInRange(value: number, min: number, max?: number): Result<boolean | undefined> {
     if (!isNumber(value).value) {

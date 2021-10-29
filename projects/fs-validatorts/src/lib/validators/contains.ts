@@ -17,15 +17,15 @@ export const CONTAINS_ERRORS: ContainsErrors =
 };
 
 /**
- * Test whether the target string contains the contained string.
+ * Test whether the `target` string 
+ * contains the `contained` string.
  * 
- * @param target The string that should contains the element
- * @param contained The possibly contained string
- * @return true if the `target` string contains the `contained` string, false otherwise
- * @example 
+ * ### Example
  * ```
  * expect(contains('foobar', 'foo').value).toBeTruthy()
  * ```
+ * @param target The string that should contain the element
+ * @param contained The possibly contained string 
  */
 export function contains(target: string, contained: string):Result<boolean | undefined> {
   if (!isString(target)) {

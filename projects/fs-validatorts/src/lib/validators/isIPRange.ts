@@ -18,10 +18,14 @@ const v4Subnet:number = 32;
 const v6Subnet:number = 128;
 
 /**
- * Checks whether the `target` is an IP range
+ * Tests whether the `target` is an IP range
+ *    
+ * ### Example
+ * ```
+ * expect(isIPRange('127.0.0.1/24').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
- * @return true if the `target` is an IP range
  */
 export function isIPRange(target:string, version:string = ''):Result<boolean|undefined>  {
   if (!isString(target)) {

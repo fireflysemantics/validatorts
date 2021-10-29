@@ -24,8 +24,12 @@ const defaultBase64Options = {
 /**
  * Checks whether the `target` is base64 encoded
  * 
+ * ### Example
+ * ```
+ * expect(isBase32('ZG======')).toBeTruthy()
+ * ```
+ * 
  * @param target The target string
- * @return true if the `target` is base64 encoded, false otherwise
  */
 export function isBase64(target: string, options?:any):Result<boolean|undefined> {
   if (!isString(target)) {

@@ -13,20 +13,23 @@ export const IS_ARRAY_UNIQUE_ERRORS: IsArrayUniqueErrors =
 };
 
 /**
- * Checks if all array's values are unique. Comparison for objects is reference-based.
- * If null or undefined is given then this function returns false.
+ * Tests whether all `array`'s values are unique. 
  * 
- * @param value The array being checked.
- * @returns True if all array's values are unique, false otherwise.
+ * ### Example
+ * ```
+ * expect(isArrayUnique([1,2])).toBeTruthy()
+ * ```
+ * 
+ * @param array The array.
  */
- export function isArrayUnique(target: any[]):Result<boolean | undefined> {
-    if (!isArray(target).value) {
+ export function isArrayUnique(array: any[]):Result<boolean | undefined> {
+    if (!isArray(array).value) {
         return new Result(
             undefined,
             IS_ARRAY_UNIQUE_ERRORS.TARGET_ARGUMENT_NOT_AN_ARRAY,
-            [target.toString()])
+            [array.toString()])
     }
   
-    const uniqueItems = target.filter((a, b, c) => c.indexOf(a) === b);
-    return new Result(target.length === uniqueItems.length);
+    const uniqueItems = array.filter((a, b, c) => c.indexOf(a) === b);
+    return new Result(array.length === uniqueItems.length);
   }

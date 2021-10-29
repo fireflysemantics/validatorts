@@ -16,11 +16,15 @@ const int = /^(?:[-+]?(?:0|[1-9][0-9]*))$/;
 const intLeadingZeroes = /^[-+]?[0-9]+$/;
 
 /**
- * Checks whether the `target` string is an int
+ * Tests whether the `target` string is an int
+ *    
+ * ### Example
+ * ```
+ * expect(isInt('13').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
  * @param options The options
- * @return true if the `target` is an int, false otherwise
  */
 export function isInt(target: string, options:any):Result<boolean|undefined> {
   if (!isString(target)) {

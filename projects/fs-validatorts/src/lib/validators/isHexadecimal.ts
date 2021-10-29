@@ -15,10 +15,13 @@ export const IS_HEXADECIMAL_ERRORS: IsHexadecimalErrors =
 const hexadecimal = /^(0x|0h)?[0-9A-F]+$/i;
 
 /**
- * Checks whether the `target` is hexadecimal
- * 
+ * Tests whether the `target` is hexadecimal
+ *    
+ * ### Example
+ * ```
+ * expect(isHexadecimal('deadBEEF').value).toBeTruthy()
+ * ```
  * @param target The target string
- * @return true if the `target` is hexadecimal, false otherwise
  */
 export function isHexadecimal(target: string):Result<boolean|undefined> {
   if (!isString(target)) {

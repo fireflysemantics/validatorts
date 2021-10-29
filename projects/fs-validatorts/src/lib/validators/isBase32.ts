@@ -18,8 +18,12 @@ const base32 = /^[A-Z2-7]+=*$/;
 /**
  * Checks whether the `target` is base32 encoded
  * 
- * @param target The target string
- * @return true if the `target` is base32 encoded, false otherwise
+ * ### Example
+ * ```
+ * expect(isBase32('ZG======')).toBeTruthy()
+ * ```
+ * 
+ * @param target The target
  */
 export function isBase32(target: string) {
   if (!isString(target)) {

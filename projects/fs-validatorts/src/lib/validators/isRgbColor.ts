@@ -20,8 +20,11 @@ const rgbaColorPercent = /^rgba\((([0-9]%|[1-9][0-9]%|100%),){3}(0?\.\d|1(\.0)?|
 /**
  * Check if `target` is a valid RGB color
  *
+ * ### Example
+ * ```
+ * expect(isRgbColor('rgb(0,0,0)').value).toBeTruthy()
+ * ```
  * @param target The RGB color
- * @return true if the `target` is a valid RGB color, false otherwise
  * 
  */
 export function isRgbColor(target:string, includePercentValues:string = `true`):Result<boolean|undefined>  {

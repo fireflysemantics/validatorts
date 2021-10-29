@@ -39,10 +39,14 @@ const blacklist = ['', '-', '+'];
 
 /**
  * Checks whether the `target` string is a decimal
+ *    
+ * ### Example
+ * ```
+ * expect(isDecimal('-.25').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
  * @param options The options
- * @return true if the `target` is a decimal, false otherwise
  */
 export function isDecimal(target: string, options:any):Result<boolean|undefined> {
   if (!isString(target)) {

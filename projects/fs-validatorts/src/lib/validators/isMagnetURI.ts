@@ -16,9 +16,12 @@ const magnetURI = /^magnet:\?xt(?:\.1)?=urn:(?:aich|bitprint|btih|ed2k|ed2khash|
 
 /**
  * Checks whether the `target` string is a valid Magnet URI
+ * ### Example
+ * ```
+ * expect(isMagnetURI('magnet:?xt.1=urn:sha1:ABCDEFGHIJKLMNOPQRSTUVWXYZ123456&xt.2=urn:sha1:ABCDEFGHIJKLMNOPQRSTUVWXYZ123456').value).toBeTruthy()
+ * ```
  * 
- * @param target The target string
- * @return true if the `target` is a valid Magnet URI, false otherwise
+ * @param target The target
  */
 export function isMagnetURI(target:string):Result<boolean|undefined> {
   if (!isString(target)) {

@@ -16,9 +16,12 @@ export const IS_SLUG_ERRORS: IsSlugErrors =
 let charsetRegex = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
 /**
  * Check if `target` is a valid slug
- *
+ *   
+ * ### Example
+ * ```
+ * expect(isSlug('foo').value).toBeTruthy()
+ * ```
  * @param target The target
- * @return true if the `target` is a valid slug, false otherwise
  */
 export function isSlug(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

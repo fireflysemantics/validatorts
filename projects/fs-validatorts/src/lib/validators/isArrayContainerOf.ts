@@ -17,16 +17,15 @@ export const IS_ARRAY_CONTAINER_OF_ERRORS: IsArrayContainerOfErrors =
 };
 
 /**
- * Checks if value array contains all values from the given target array.
- * If value is null, undefined, or not an array instance
- * then this function returns false.
+ * Tests if `container` array contains values array.
  * 
  * The values check should be primitive javascript types (String, number, boolean, null, undefined, etc.).
  * and not Object instances.
  * 
- * Note that the check is value based.  For example the values 
- * in the array [2,3,4,2] are contained by [2,3,4] even though the latter
- * is shorter. 
+ * ### Example
+ * ```
+ * expect(isArrayContainerOf([2,3,4],[2,3]).value).toBeTruthy()
+ * ```
  * 
  * @param container The container.
  * @param values The array of values that may be contained.

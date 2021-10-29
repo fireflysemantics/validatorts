@@ -163,13 +163,16 @@ export interface IsMobilePhoneOptions {
 }
 
 /**
- * Checks whether the `target` string is a valid Mobile Phone Number
+ * Tests whether the `target` string is a valid Mobile Phone Number
+ *    
+ * ### Example
+ * ```
+ * expect(isMobilePhone('223-456-7890', 'en-US').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
  * @param locale The locale
  * @param options The options
- * @throws Error If the local passed in is not supported.
- * @return true if the `target` is a valid Mobile Phone Number, false otherwise
  */
 export function isMobilePhone(target:string, locale:string, options?:IsMobilePhoneOptions):Result<boolean|undefined>  {
   if (!isString(target)) {

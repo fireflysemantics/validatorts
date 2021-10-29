@@ -22,11 +22,16 @@ export const IS_ALPHA_ERRORS: IsAlphaErrors =
 };
 
 /**
- * Checks whether if the string contains only letters (a-zA-Z)
+ * Tests whether if the string contains only letters
+ * valid for the locale.  For the US his would be (a-zA-Z).
+ * 
+ * ### Example
+ * ```
+ * expect(isAlpha('hello').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
- * @param locale The locale argument, defaults to 'en-US' 
- * @return true if the string contains only letters (a-zA-Z), false otherwise
+ * @param locale The locale argument, defaults to 'en-US'
  */
 export function isAlpha(target: string, locale: string = 'en-US'):Result<boolean | undefined> {
   if (!isString(target)) {

@@ -18,10 +18,14 @@ const factor = [1, 3];
 
 /**
  * Test whether the target string is an ISBN number.
+ *    
+ * ### Example
+ * ```
+ * expect(isISBN('3836221195').value).toBeTruthy()
+ * ```
  * 
  * @param target The string
  * @param version The ISBN version
- * @return true if the `target` string is an ISBN number, false otherwise
  */
 export function isISBN(target: string, version: string = ''):Result<boolean|undefined>  {
   if (!isString(target)) {

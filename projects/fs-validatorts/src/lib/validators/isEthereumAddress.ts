@@ -15,10 +15,16 @@ export const IS_ETHEREUM_ADDRESS_ERRORS: IsEthereumAddressErrors =
 const eth = /^(0x)[0-9a-f]{40}$/i;
 
 /**
- * Checks whether the `target` is an ethereum address
+ * Tests whether the `target` is an ethereum address
+ * 
+ *    
+ * ### Example
+ * ```
+ * expect(isEthereumAddress('0x0000000000000000000000000000000000000001').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
- * @return true if the `target` is an ethereum address
+ * 
  */
 export function isEthereumAddress(target: string):Result<boolean | undefined> {
   if (!isString(target)) {

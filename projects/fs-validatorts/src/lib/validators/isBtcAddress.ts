@@ -18,9 +18,12 @@ const bech32 = /^(bc1)[a-z0-9]{25,39}$/;
 const base58 = /^(1|3)[A-HJ-NP-Za-km-z1-9]{25,39}$/;
 /**
  * Checks whether the `target` is a btc address 
- * 
- * @param target The target string
- * @return true if the `target` is a btc address, false otherwise
+ *   
+ * ### Example
+ * ```
+ * expect(isBtcAddress('1MUz4VMYui5qY1mxUiG8BQ1Luv6tqkvaiL').value).toBeTruthy()
+ * ``` 
+ * @param target The target
  */
 export function isBtcAddress(target: string): Result<boolean | undefined> {
   if (!isString(target)) {

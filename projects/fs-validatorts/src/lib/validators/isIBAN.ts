@@ -100,15 +100,18 @@ export const IS_IBAN_ERRORS: IsIBANErrors =
 };
 
 /**
- * Check whether string has correct universal IBAN format
+ * Test whether string has correct universal IBAN format
  * The IBAN consists of up to 34 alphanumeric characters, as follows:
  * Country Code using ISO 3166-1 alpha-2, two letters
  * check digits, two digits and
  * Basic Bank Account Number (BBAN), up to 30 alphanumeric characters.
  * NOTE: Permitted IBAN characters are: digits [0-9] and the 26 latin alphabetic [A-Z]
- *
- * @param {string} str - string under validation
- * @return {boolean}
+ *    
+ * ### Example
+ * ```
+ * expect(hasValidIbanFormat('SC52BAHL01031234567890123456USD').value).toBeTruthy()
+ * ```
+ * @param str - string under validation
  */
 function hasValidIbanFormat(str:string) {
   // Strip white spaces and hyphens, keep only digits and A-Z latin alphabetic

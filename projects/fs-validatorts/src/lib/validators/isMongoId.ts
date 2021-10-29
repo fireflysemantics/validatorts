@@ -15,10 +15,13 @@ export const IS_MONGO_ID_ERRORS: IsMongoIDErrors =
 import { isHexadecimal } from './isHexadecimal';
 
 /**
- * Checks whether the `target` string is a valid MongoID
- * 
+ * Tests whether the `target` string is a valid MongoID
+ *    
+ * ### Example
+ * ```
+ * expect(isMongoId('507f1f77bcf86cd799439011').value).toBeTruthy()
+ * ```
  * @param target The target string
- * @return true if the `target` is a valid MongoID, false otherwise
  */
 export function isMongoId(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

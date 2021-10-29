@@ -15,11 +15,14 @@ export const IS_FLOAT_ERRORS: IsFloatErrors =
 };
 
 /**
- * Checks whether the `target` string is a float
+ * Tests whether the `target` string is a float
  * 
  * @param target The target string
  * @param options The options
- * @return true if the `target` is is a float, false otherwise
+ * ### Example
+ * ```
+ * expect(isFloat('123.123').value).toBeTruthy()
+ * ```
  */
 export function isFloat(target: string, options?:any):Result<boolean|undefined> {
   if (!isString(target)) {

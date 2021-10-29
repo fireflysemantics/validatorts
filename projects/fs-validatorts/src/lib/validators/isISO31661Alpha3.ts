@@ -37,8 +37,11 @@ const validISO31661Alpha3CountriesCodes = [
  * Check whether the `target` string is a valid 
  * ISO 3166-1 alpha-3 officially assigned country code
  * 
+ * ### Example
+ * ```
+ * expect(isISO31661Alpha3('ABW').value).toBeTruthy()
+ * ```
  * @param target The target string
- * @return true if the `target` is a valid is a valid ISO 3166-1 alpha-2 officially assigned country code, false otherwise
  */
 export function isISO31661Alpha3(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

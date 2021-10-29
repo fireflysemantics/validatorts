@@ -30,11 +30,15 @@ const lengths:StringKeyNumber = {
 };
 
 /**
- * Checks whether the `target` string is hashed using the `arg` algorithm
+ * Tests whether the `target` string is hashed using the `arg` algorithm
+ * 
+ * ### Example
+ * ```
+ * expect(isHash('d94f3f016ae679c3008de268209132f2', 'md5').value).toBeTruthy()
+ * ```
  * 
  * @param target The target string
  * @param arg The arg
- * @return true if the `target` is hashed using the `arg` algorithm, false otherwise
  */
 export function isHash(target: string, arg:string):Result<boolean | undefined> {
   if (!isString(target)) {

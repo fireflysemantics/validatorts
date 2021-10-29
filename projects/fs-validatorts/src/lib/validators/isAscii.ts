@@ -21,8 +21,11 @@ const ascii = /^[\x00-\x7F]+$/;
 /**
  * Checks whether the `target` conforms to the ascii standard
  * 
- * @param target The target string
- * @return true if the `target` conforms to the ascii standard, false otherwise
+ * ###
+ * ```
+ * expect(isAscii('foobar')).toBeTruthy()
+ * ```
+ * @param target The target
  */
 export function isAscii(target: string):Result<boolean | undefined> {
   if (!isString(target)) {

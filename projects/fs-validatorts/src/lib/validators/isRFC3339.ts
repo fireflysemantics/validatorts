@@ -36,8 +36,11 @@ const rfc3339 = new RegExp(`^${fullDate.source}[ tT]${fullTime.source}$`);
 /**
  * Check if `target` is a valid RFC3339 timestamp
  *
+ * ### Example
+ * ```
+ * expect(isRFC3339('2009-05-19 14:39:22-06:00').value).toBeTruthy()
+ * ```
  * @param target The time stamp
- * @return true if the `target` is a valid RFC3339 timestamp, false otherwise
  * 
  * @example
 ```

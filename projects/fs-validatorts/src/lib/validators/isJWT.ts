@@ -14,10 +14,13 @@ export const IS_JWT_ERRORS: IsJWTErrors =
 };
 
 /**
- * Checks whether the `target` string is a valid JWT
- * 
+ * Tests whether the `target` string is a valid JWT
+ *    
+ * ### Example
+ * ```
+ * expect(isJWT('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dnZWRJbkFzIjoiYWRtaW4iLCJpYXQiOjE0MjI3Nzk2Mzh9.gzSraSYS8EXBxLN_oWnFSRgCzcmJmMjLiuyu5CSpyHI').value).toBeTruthy()
+ * ```
  * @param target The target string
- * @return true if the `target` is a valid JWT, false otherwise
  */
 export function isJWT(target:string):Result<boolean|undefined>  {
   if (!isString(target)) {

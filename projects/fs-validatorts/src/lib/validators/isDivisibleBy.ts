@@ -17,11 +17,15 @@ export const IS_DIVISIBLE_BY_ERRORS: IsDivisibleByErrors =
 };
 
 /**
- * Checks whether the `target` is divisible by the arg
- * 
+ * Tests whether the `target` is divisible by the arg
+ *    
+ * ### Example
+ * ```
+ * expect(isDivisibleBy(2,2).value).toBeTruthy()
+ * ```
+
  * @param target The target string
  * @param divisor The divisor
- * @return true if the `target` is divisible by the `divisor`, false otherwise
  */
 export function isDivisibleBy(target: number, divisor: number):Result<boolean | undefined> {
   if (!isNumber(target).value) {
