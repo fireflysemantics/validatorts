@@ -27,7 +27,7 @@ import { halfWidth } from './isHalfWidth';
  * @param target The target string
  */
 export function isVariableWidth(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_VARIABLE_WIDTH_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

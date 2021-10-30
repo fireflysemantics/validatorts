@@ -32,7 +32,7 @@ const uuid:StringKeyRegEx = {
  */
 export function isUUID(target:string, version?:string):Result<boolean|undefined>  {
   version = version ? version : 'all'
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_UUID_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

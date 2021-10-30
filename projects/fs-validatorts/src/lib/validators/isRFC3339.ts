@@ -48,7 +48,7 @@ const isRFC3339:boolean = isRFC3339('2002-10-02T15:00:00Z')
 ```
  */
 export function isRFC3339(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_RFC3339_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

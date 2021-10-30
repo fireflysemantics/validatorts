@@ -25,7 +25,7 @@ const isBICReg = /^[A-z]{4}[A-z]{2}\w{2}(\w{3})?$/;
  * @param target The target string
  */
 export function isBIC(target: string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_BIC_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 

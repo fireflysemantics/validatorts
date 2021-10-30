@@ -26,7 +26,7 @@ const base58 = /^(1|3)[A-HJ-NP-Za-km-z1-9]{25,39}$/;
  * @param target The target
  */
 export function isBtcAddress(target: string): Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined,
       IS_BTC_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

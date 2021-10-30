@@ -34,13 +34,13 @@ export const IS_ALPHA_ERRORS: IsAlphaErrors =
  * @param locale The locale argument, defaults to 'en-US'
  */
 export function isAlpha(target: string, locale: string = 'en-US'):Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_ALPHA_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 
       [target])
   }
-  if (!isString(locale)) {
+  if (!isString(locale).value) {
     return new Result(
       undefined, 
       IS_ALPHA_ERRORS.LOCALE_ARGUMENT_NOT_A_STRING, 

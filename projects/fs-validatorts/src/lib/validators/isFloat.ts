@@ -25,7 +25,7 @@ export const IS_FLOAT_ERRORS: IsFloatErrors =
  * ```
  */
 export function isFloat(target: string, options?:any):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_FLOAT_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

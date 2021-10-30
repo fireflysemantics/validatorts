@@ -23,7 +23,7 @@ export const TO_DATE_ERRORS: ToDateErrors =
  * @param target The target
  */
 export function toDate(target: string):Result<Date | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined,
       TO_DATE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

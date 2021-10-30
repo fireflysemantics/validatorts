@@ -29,13 +29,13 @@ export const BLACKLIST_ERRORS: BlacklistErrors =
  * @param chars
  */
 export function blacklist(target: string, chars: string): Result<string|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       BLACKLIST_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 
       [target])
   }
-  if (!isString(chars)) {
+  if (!isString(chars).value) {
     return new Result(
       undefined, 
       BLACKLIST_ERRORS.CHARS_ARGUMENT_NOT_A_STRING, 

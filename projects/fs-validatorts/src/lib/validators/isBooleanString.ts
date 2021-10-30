@@ -23,7 +23,7 @@ export const IS_BOOLEAN_STRING_ERRORS: IsBooleanStringErrors =
  * @param target The target
  */
 export function isBooleanString(target: string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_BOOLEAN_STRING_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 

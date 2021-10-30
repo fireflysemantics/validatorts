@@ -41,7 +41,7 @@ const lengths:StringKeyNumber = {
  * @param arg The arg
  */
 export function isHash(target: string, arg:string):Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_HASH_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

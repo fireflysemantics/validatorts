@@ -24,7 +24,7 @@ export const IS_MATCHES_ERRORS: IsMatchesErrors =
  * @param modifiers The optional modifier
  */
 export function matches(target:string, pattern:RegExp, modifiers?:string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_MATCHES_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

@@ -27,7 +27,7 @@ const intLeadingZeroes = /^[-+]?[0-9]+$/;
  * @param options The options
  */
 export function isInt(target: string, options:any):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_INT_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

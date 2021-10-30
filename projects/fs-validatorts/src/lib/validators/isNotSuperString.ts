@@ -29,13 +29,13 @@ export const IS_NOT_SUPER_STRING_ERRORS: IsNotSuperStringErrors =
  * @param subString The target value to perform the check against.
  */
 export function isNotSuperString(superString: string, subString: string): Result<boolean | undefined> {
-    if (!isString(superString)) {
+    if (!isString(superString).value) {
         return new Result(
             undefined,
             IS_NOT_SUPER_STRING_ERRORS.VALUE_ARGUMENT_NOT_A_STRING,
             [superString])
     }
-    if (!isString(subString)) {
+    if (!isString(subString).value) {
         return new Result(
             undefined,
             IS_NOT_SUPER_STRING_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

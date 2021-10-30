@@ -26,7 +26,7 @@ const base32 = /^[A-Z2-7]+=*$/;
  * @param target The target
  */
 export function isBase32(target: string) {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_BASE32_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 

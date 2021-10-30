@@ -23,7 +23,7 @@ export const IS_IN_ARRAY_ERRORS: IsInArrayErrors =
  * @param array The array
  */
 export function isInArray(value: any, array: any[]): Result<boolean | undefined> {
-    if (!isArray(array)) {
+    if (!isArray(array).value) {
         return new Result(
             undefined,
             IS_IN_ARRAY_ERRORS.TARGET_ARGUMENT_NOT_AN_ARRAY,

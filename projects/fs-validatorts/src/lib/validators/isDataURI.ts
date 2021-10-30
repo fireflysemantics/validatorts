@@ -31,7 +31,7 @@ const validData = /^[a-z0-9!\$&'\(\)\*\+,;=\-\._~:@\/\?%\s]*$/i;
  * @return true if the `target` is a data URI, false otherwise
  */
 export function isDataURI(target: string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_DATA_URI_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

@@ -27,7 +27,7 @@ const macAddressWithDots = /^([0-9a-fA-F]{4}\.){2}([0-9a-fA-F]{4})$/;
  * @param options The options
  */
 export function isMACAddress(target:string, options:any):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_MAC_ADDRESS_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

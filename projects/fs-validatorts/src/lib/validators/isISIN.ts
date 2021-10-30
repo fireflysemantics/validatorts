@@ -25,7 +25,7 @@ const isin = /^[A-Z]{2}[0-9A-Z]{9}[0-9]$/;
  * @param target The string
  */
 export function isISIN(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_ISIN_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

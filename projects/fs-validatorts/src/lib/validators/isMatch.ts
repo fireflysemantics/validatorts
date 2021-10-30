@@ -34,7 +34,7 @@ export function isMatch(
     modifiers?: string
 ): Result<boolean | undefined> {
 
-    if (!isString(target)) {
+    if (!isString(target).value) {
         return new Result(
             undefined,
             IS_MATCH_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

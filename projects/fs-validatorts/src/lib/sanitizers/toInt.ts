@@ -20,7 +20,7 @@ export const TO_INT_ERRORS: ToIntErrors =
  * @param radix 
  */
 export function toInt(target:string, radix:number):Result<number|undefined> {
-  if (!isInt(target, radix)) {
+  if (!isInt(target, radix).value) {
     return new Result(
       undefined,
       TO_INT_ERRORS.TARGET_IS_NOT_A_INT,

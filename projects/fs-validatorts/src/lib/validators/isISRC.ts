@@ -26,7 +26,7 @@ const isrc = /^[A-Z]{2}[0-9A-Z]{3}\d{2}\d{5}$/;
  * @param target The target string
  */
 export function isISRC(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_ISRC_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

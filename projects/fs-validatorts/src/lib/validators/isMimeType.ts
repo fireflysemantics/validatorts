@@ -54,7 +54,7 @@ const mimeTypeMultipart = /^multipart\/[a-zA-Z0-9\.\-\+]{1,100}(;\s?(boundary|ch
  * @param target The target string
  */
 export function isMimeType(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_MIME_TYPE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

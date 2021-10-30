@@ -24,7 +24,7 @@ const localeReg = /^[A-z]{2,4}([_-]([A-z]{4}|[\d]{3}))?([_-]([A-z]{2}|[\d]{3}))?
  * @param target The target string
  */
 export function isLocale(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_LOCALE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

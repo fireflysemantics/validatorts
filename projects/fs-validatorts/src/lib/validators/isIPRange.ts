@@ -28,7 +28,7 @@ const v6Subnet:number = 128;
  * @param target The target string
  */
 export function isIPRange(target:string, version:string = ''):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_IPRANGE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

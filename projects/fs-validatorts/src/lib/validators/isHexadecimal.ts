@@ -24,7 +24,7 @@ const hexadecimal = /^(0x|0h)?[0-9A-F]+$/i;
  * @param target The target string
  */
 export function isHexadecimal(target: string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_HEXADECIMAL_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

@@ -39,7 +39,7 @@ const default_byte_length_options:IsByteLengthOptions = {
  * @param options The option parameters containing the min and max length of the string
  */
 export function isByteLength(target: string, options: IsByteLengthOptions = default_byte_length_options):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_BYTE_LENGTH_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 

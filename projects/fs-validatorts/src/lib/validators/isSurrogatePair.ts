@@ -24,7 +24,7 @@ const surrogatePair = /[\uD800-\uDBFF][\uDC00-\uDFFF]/;
  * @param target The target
  */
 export function isSurrogatePair(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_SURROGATE_PAIR_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

@@ -59,7 +59,7 @@ const isValidDate = (str:string) => {
  * @param options The options
  */
 export function isISO8601(target:string, options?:any):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_ISO8601_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

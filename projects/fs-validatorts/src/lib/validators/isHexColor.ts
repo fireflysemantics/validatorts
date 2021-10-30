@@ -24,7 +24,7 @@ const hexcolor = /^#?([0-9A-F]{3}|[0-9A-F]{4}|[0-9A-F]{6}|[0-9A-F]{8})$/i;
  * @param target The target
  */
 export function isHexColor(target:string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_HEXCOLOR_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

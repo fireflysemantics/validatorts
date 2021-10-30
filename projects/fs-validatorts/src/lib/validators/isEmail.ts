@@ -100,7 +100,7 @@ function validateDisplayName(display_name:string) {
  */
 export function isEmail(target: string, options:IsEmailOptions = default_email_options):Result<boolean|undefined> {
 
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_EMAIL_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

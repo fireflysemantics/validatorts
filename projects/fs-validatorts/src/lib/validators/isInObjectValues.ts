@@ -23,7 +23,7 @@ export const IS_IN_OBJECT_VALUES_ERRORS: IsInObjectValuesErrors =
  * @param options The options
  */
 export function isInObjectValues(target: any, object:any):Result<boolean|undefined> {
-  if (!isObject(object)) {
+  if (!isObject(object).value) {
     return new Result(
       undefined, 
       IS_IN_OBJECT_VALUES_ERRORS.OBJECT_ARGUMENT_NOT_AN_OBJECT,

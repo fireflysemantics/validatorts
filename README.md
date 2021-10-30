@@ -1,27 +1,29 @@
+# @fireflysemantics/validatorts
+
+A typescript library of [validators and sanitizers](https://fireflysemantics.github.io/validatorts/modules.html) based on [validator.js](https://www.npmjs.com/package/validator).
+
+
 [![Build Status](https://travis-ci.org/fireflysemantics/validatorts.svg?branch=master)](https://travis-ci.org/fireflysemantics/validatorts)
 
 # Install
 
 ```
-npm i -S @fireflysemantics/validatorts
-```
-
-Note that if you are using the `FESM5` package format the `tslib` peer dependency must also be installed.
-
-```
-npm i -S npm i tslib
+npm i -S @fireflysemantics/validatorts tslib
 ```
 
 # Use
+
 ```
 import { isPort } from '@fireflysemantics/validatorts';
-const portNumber:boolean = isPort('4200').value
-console.log(isPortNumber)
+console.log(isPort('4200').value) //Logs true
 ```
+[Stackblitz](https://stackblitz.com/edit/typescript-ahxupq)
 
 # Error Handling
 
-Each validator returns a `Result` with this interface:
+# API
+
+Each validator returns a `Result` instance with this interface:
 
 ```
 /**
@@ -40,10 +42,18 @@ export class Result<E> {
     }
 }
 ```
+
+
+
 Thus if there is an error the `value` property will be `undefined`, the `error` property will be set to the function used to generate the `message` and the `message` will be initialized as well.
 
 For the error handlling approach see the article [Typescript Exception Free Function Error Handling](https://developer.fireflysemantics.com/tasks/tasks--typescript--typescript-exception-free-error-handling).
 
+## Browse Typedoc
+
+The [Typedoc](https://fireflysemantics.github.io/validatorts/) contains documentation for all the validators and sanitizers.
+
+Clicking on a particular validator or sanitizer reveals the API and the types of errors that can occur when using the API.
 
 # Supported Package Formats
 
@@ -63,6 +73,7 @@ The library is built with the Angular Package Format.  It therefore supports all
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
 
+
 ## Build ValidatorTS
 From the project root run `npm run b`
 
@@ -71,10 +82,6 @@ From the project root run `npm run b`
 Run the Jest Tests for ValidatorTS
 
 `npm t`
-
-## Browse Typedoc
-
-[Typedoc](https://fireflysemantics.github.io/validatorts/)
 
 ## Generate Typedoc 
 

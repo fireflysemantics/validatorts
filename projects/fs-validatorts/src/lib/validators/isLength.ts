@@ -26,7 +26,7 @@ export const IS_LENGTH_ERRORS: IsLengthErrors =
  * @param max The maximum length - Infinity if not defined
  */
 export function isLength(target:string, min: number = 0, max: number = Infinity):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_LENGTH_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

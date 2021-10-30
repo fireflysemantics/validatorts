@@ -37,13 +37,13 @@ export const IS_ALPHA_NUMERIC_ERRORS: IsAlphaNumericErrors =
  * @param locale The locale (Defaults to 'en-US') 
  */
 export function isAlphaNumeric(_target: string, locale: string = 'en-US', options:any = {}):Result<boolean|undefined> {
-  if (!isString(_target)) {
+  if (!isString(_target).value) {
     return new Result(
       undefined, 
       IS_ALPHA_NUMERIC_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 
       [_target])
   }
-  if (!isString(locale)) {
+  if (!isString(locale).value) {
     return new Result(
       undefined, 
       IS_ALPHA_NUMERIC_ERRORS.LOCALE_ARGUMENT_NOT_A_STRING, 

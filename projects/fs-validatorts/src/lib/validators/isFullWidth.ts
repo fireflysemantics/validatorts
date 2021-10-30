@@ -25,7 +25,7 @@ export const fullWidth = /[^\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE
  * @param target The target string
  */
 export function isFullWidth(target: string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_FULL_WIDTH_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

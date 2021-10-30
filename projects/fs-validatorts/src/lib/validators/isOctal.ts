@@ -24,7 +24,7 @@ const octal = /^(0o)?[0-7]+$/i;
  * @param target The target string
  */
 export function isOctal(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_OCTAL_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

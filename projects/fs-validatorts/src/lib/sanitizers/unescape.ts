@@ -18,7 +18,7 @@ export const UNESCAPE_ERRORS: UnescapeErrors =
  * @param target The target
  */
 export function unescape(target:string):Result<string | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined,
       UNESCAPE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

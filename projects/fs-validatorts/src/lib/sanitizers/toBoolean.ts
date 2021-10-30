@@ -22,7 +22,7 @@ export const TO_BOOLEAN_ERRORS: ToBooleanErrors =
  * @param strict 
  */
 export function toBoolean(target:string, strict:boolean):Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined,
       TO_BOOLEAN_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

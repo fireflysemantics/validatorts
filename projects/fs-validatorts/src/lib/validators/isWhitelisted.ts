@@ -29,13 +29,13 @@ export const IS_WHITELISTED_ERRORS: IsWhitelistedErrors =
  * @param whitelist The white list
  */
 export function isWhitelisted(target:string, whitelist:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_WHITELISTED_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
       [target])
   }
-  if (!isString(whitelist)) {
+  if (!isString(whitelist).value) {
     return new Result(
       undefined, 
       IS_WHITELISTED_ERRORS.WHITELIST_ARGUMENT_NOT_A_STRING,

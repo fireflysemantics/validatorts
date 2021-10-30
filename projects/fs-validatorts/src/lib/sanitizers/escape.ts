@@ -17,7 +17,7 @@ export const ESCAPE_ERRORS: EscapeErrors =
  * @param target The string to perform the `escape` operation on.
  */
 export function escape(target:string):Result<string|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined,
       ESCAPE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

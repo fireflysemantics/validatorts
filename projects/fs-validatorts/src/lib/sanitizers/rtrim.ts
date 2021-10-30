@@ -23,13 +23,13 @@ export const RTRIM_ERRORS: RTrimErrors =
  * @param chars The charachters
  */
 export function rtrim(target:string, chars:string):Result<string|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       RTRIM_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 
       [target])
   }
-  if (!isString(chars)) {
+  if (!isString(chars).value) {
     return new Result(
       undefined, 
       RTRIM_ERRORS.CHARS_ARGUMENT_NOT_A_STRING, 

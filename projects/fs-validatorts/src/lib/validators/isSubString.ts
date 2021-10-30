@@ -27,13 +27,13 @@ export const IS_SUBSTRING_ERRORS: IsSubStringErrors =
  * @param target The target value to perform the check against.
  */
 export function isSubString(contained: string, target: string): Result<boolean | undefined> {
-    if (!isString(contained)) {
+    if (!isString(contained).value) {
         return new Result(
             undefined,
             IS_SUBSTRING_ERRORS.CONTAINED_ARGUMENT_NOT_A_STRING,
             [contained])
     }
-    if (!isString(target)) {
+    if (!isString(target).value) {
         return new Result(
             undefined,
             IS_SUBSTRING_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

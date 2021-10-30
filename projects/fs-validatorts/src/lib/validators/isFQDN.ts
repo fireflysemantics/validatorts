@@ -42,7 +42,7 @@ const default_fqdn_options: IsFQDNOptions = {
  * ```
  */
 export function isFQDN(target: string, options: any): Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined,
       IS_FQDN_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

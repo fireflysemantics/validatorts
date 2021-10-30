@@ -23,7 +23,7 @@ export const IS_UPPERCASE_ERRORS: IsUppercaseErrors =
  * @param target The target
  */
 export function isUppercase(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_UPPERCASE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

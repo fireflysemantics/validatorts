@@ -91,7 +91,7 @@ export const postalCodeLocales = Object.keys(patterns);
  * @param locale The locale
  */
 export function isPostalCode(target:string, locale:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_POSTAL_CODE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

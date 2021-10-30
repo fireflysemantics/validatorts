@@ -23,7 +23,7 @@ export const IS_JWT_ERRORS: IsJWTErrors =
  * @param target The target string
  */
 export function isJWT(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_JWT_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

@@ -24,7 +24,7 @@ const magnetURI = /^magnet:\?xt(?:\.1)?=urn:(?:aich|bitprint|btih|ed2k|ed2khash|
  * @param target The target
  */
 export function isMagnetURI(target:string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_MAGNET_URI_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

@@ -90,7 +90,7 @@ function checkHost(host:any, matches:any) {
  * @param options The options
  */
 export function isURL(url:string, options:any):Result<boolean|undefined>  {
-  if (!isString(url)) {
+  if (!isString(url).value) {
     return new Result(
       undefined, 
       IS_URL_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

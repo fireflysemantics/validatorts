@@ -24,7 +24,7 @@ let charsetRegex = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
  * @param target The target
  */
 export function isSlug(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_SLUG_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

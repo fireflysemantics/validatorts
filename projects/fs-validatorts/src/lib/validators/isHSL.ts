@@ -26,7 +26,7 @@ const hslspace = /^(hsl)a?\(\s*((\+|\-)?([0-9]+(\.[0-9]+)?(e(\+|\-)?[0-9]+)?|\.[
  * @param target The target string
  */
 export function isHSL(target: string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_HSL_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

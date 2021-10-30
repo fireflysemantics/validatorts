@@ -29,7 +29,7 @@ export const IS_PORT_ERRORS: IsPortErrors =
  *
  */
 export function isPort(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_PORT_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

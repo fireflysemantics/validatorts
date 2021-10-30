@@ -24,7 +24,7 @@ const md5 = /^[a-f0-9]{32}$/;
  * @param target The target string
  */
 export function isMD5(target:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_MD5_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

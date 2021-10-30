@@ -19,7 +19,7 @@ export const TO_FLOAT_ERRORS: ToFloatErrors =
  * @param target The target
  */
 export function toFloat(target:string):Result<number | undefined> {
-  if (!isFloat(target)) {
+  if (!isFloat(target).value) {
     return new Result(
       undefined,
       TO_FLOAT_ERRORS.TARGET_IS_NOT_A_FLOAT,

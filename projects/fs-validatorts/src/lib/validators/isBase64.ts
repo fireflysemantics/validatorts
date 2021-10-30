@@ -32,7 +32,7 @@ const defaultBase64Options = {
  * @param target The target string
  */
 export function isBase64(target: string, options?:any):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_BASE64_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 

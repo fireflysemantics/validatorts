@@ -113,7 +113,7 @@ export interface IsCurrencyOptions {
  * @param options The options
  */
 export function isCurrency(target: string, options:any = default_currency_options):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_CURRENCY_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

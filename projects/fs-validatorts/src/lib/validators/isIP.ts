@@ -63,7 +63,7 @@ export const IS_IP_ERRORS: IsIPErrors =
 
  export function isIP(target:string, version:string=''):Result<boolean | undefined> {
    console.log(`THE VERSION IS: ${version}`)
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_IP_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

@@ -27,7 +27,7 @@ import { blacklist } from './blacklist';
  * @param keep_new_lines 
  */
 export function stripLow(target:string, keep_new_lines:boolean) {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       STRIP_LOW_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 

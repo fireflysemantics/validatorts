@@ -27,7 +27,7 @@ const default_json_options = {
  * @param target The target string
  */
 export function isJSON(target: string, options: any): Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined,
       IS_JSON_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

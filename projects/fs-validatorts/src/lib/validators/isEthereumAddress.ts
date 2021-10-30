@@ -27,7 +27,7 @@ const eth = /^(0x)[0-9a-f]{40}$/i;
  * 
  */
 export function isEthereumAddress(target: string):Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_ETHEREUM_ADDRESS_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

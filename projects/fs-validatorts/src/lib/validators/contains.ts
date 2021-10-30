@@ -28,13 +28,13 @@ export const CONTAINS_ERRORS: ContainsErrors =
  * @param contained The possibly contained string 
  */
 export function contains(target: string, contained: string):Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       CONTAINS_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 
       [target])
   }
-  if (!isString(contained)) {
+  if (!isString(contained).value) {
     return new Result(
       undefined, 
       CONTAINS_ERRORS.CONTAINED_ARGUMENT_NOT_A_STRING, 

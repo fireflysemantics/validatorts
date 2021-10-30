@@ -37,7 +37,7 @@ const defaultLatLongOptions = {
  * @param target The target string
  */
 export function isLatLong(target: string, options:IsLatLongOptions = defaultLatLongOptions): Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined,
       IS_LATLONG_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

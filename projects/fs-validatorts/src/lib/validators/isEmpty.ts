@@ -31,7 +31,7 @@ const default_is_empty_options = {
  * @param options The options
  */
 export function isEmpty(target: string, options:any):Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_EMPTY_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

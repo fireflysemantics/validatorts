@@ -28,7 +28,7 @@ const factor = [1, 3];
  * @param version The ISBN version
  */
 export function isISBN(target: string, version: string = ''):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_ISBN_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

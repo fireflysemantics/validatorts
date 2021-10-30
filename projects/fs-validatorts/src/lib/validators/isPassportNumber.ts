@@ -79,13 +79,13 @@ const passportRegexByCountryCode:StringKeyRegEx = {
  * @param countryCode The country code
  */
 export function isPassportNumber(target:string, countryCode:string):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_PASSPORT_NUMBER_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 
       [target])
   }
-  if (!isString(countryCode)) {
+  if (!isString(countryCode).value) {
     return new Result(
       undefined, 
       IS_PASSPORT_NUMBER_ERRORS.INVALID_COUNTRY_CODE, 

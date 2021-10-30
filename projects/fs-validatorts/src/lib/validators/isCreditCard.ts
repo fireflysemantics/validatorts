@@ -25,7 +25,7 @@ const creditCard = /^(?:4[0-9]{12}(?:[0-9]{3,6})?|5[1-5][0-9]{14}|(222[1-9]|22[3
  * @param target The target string
  */
 export function isCreditCard(target: string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_CREDIT_CARD_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 

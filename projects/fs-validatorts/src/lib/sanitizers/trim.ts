@@ -27,13 +27,13 @@ export const TRIM_ERRORS: TrimErrors =
  * @param chars The characters
  */
 export function trim(target:string, chars:string):Result<string|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       TRIM_ERRORS.TARGET_ARGUMENT_NOT_A_STRING, 
       [target])
   }
-  if (!isString(chars)) {
+  if (!isString(chars).value) {
     return new Result(
       undefined, 
       TRIM_ERRORS.CHARS_ARGUMENT_NOT_A_STRING,

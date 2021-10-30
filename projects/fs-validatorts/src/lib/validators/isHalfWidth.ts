@@ -25,7 +25,7 @@ export const halfWidth = /[\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0
  * @param target The target string
  */
 export function isHalfWidth(target: string):Result<boolean|undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_HALF_WIDTH_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

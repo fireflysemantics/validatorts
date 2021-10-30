@@ -83,7 +83,7 @@ function getPositionWeightThroughLengthAndIndex(length:number, index:number) {
  * @param target The target
  */
  export function isEAN(target: string):Result<boolean | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_EAN_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

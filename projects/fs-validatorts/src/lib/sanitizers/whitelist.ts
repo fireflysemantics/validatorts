@@ -22,7 +22,7 @@ export const WHITELIST_ERRORS: WhiteErrors =
  * @param chars The chars
  */
 export function whitelist(target:string, chars:string):Result<string | undefined> {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined,
       WHITELIST_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,

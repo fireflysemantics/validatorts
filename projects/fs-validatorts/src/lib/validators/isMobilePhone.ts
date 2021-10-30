@@ -175,13 +175,13 @@ export interface IsMobilePhoneOptions {
  * @param options The options
  */
 export function isMobilePhone(target:string, locale:string, options?:IsMobilePhoneOptions):Result<boolean|undefined>  {
-  if (!isString(target)) {
+  if (!isString(target).value) {
     return new Result(
       undefined, 
       IS_MOBILE_PHONE_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
       [target])
   }
-  if (!isString(locale)) {
+  if (!isString(locale).value) {
     return new Result(
       undefined, 
       IS_MOBILE_PHONE_ERRORS.LOCALE_ARGUMENT_NOT_A_STRING,
