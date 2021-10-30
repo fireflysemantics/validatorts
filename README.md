@@ -5,13 +5,13 @@ A typescript library of [validators and sanitizers](https://fireflysemantics.git
 
 [![Build Status](https://travis-ci.org/fireflysemantics/validatorts.svg?branch=master)](https://travis-ci.org/fireflysemantics/validatorts)
 
-# Install
+## Install
 
 ```
 npm i -S @fireflysemantics/validatorts tslib
 ```
 
-# Use
+## Use
 
 ```
 import { isPort } from '@fireflysemantics/validatorts';
@@ -19,15 +19,32 @@ console.log(isPort('4200').value) //Logs true
 ```
 [Stackblitz](https://stackblitz.com/edit/typescript-ahxupq)
 
-# Error Handling
+## Error Handling
 
-# API
+In the event of an error the `Result.value` property will be `undefined` and both the `message` and `error` properties will be set, thus we can handle and error like this:
 
-Each validator returns a `Result` instance with this interface:
+```
+if (isPort(4200).error) {
+  console.log(isPort(4200).value); //Logs undefined
+  console.log(isPort(4200).message); //The error message
+}
+```
+
+To see what types of errors can occur see the [Typedoc](https://fireflysemantics.github.io/validatorts/) for the API being used.
+
+For more details on the error handling design and approach see [Typescript Exception Free Function Error Handling](https://developer.fireflysemantics.com/tasks/tasks--typescript--typescript-exception-free-error-handling).
+
+## Typedoc
+
+The [Typedoc](https://fireflysemantics.github.io/validatorts/) contains documentation for all the `validators` and `sanitizers`.
+
+### Result API
+
+Each `validator` and `sanitizer` returns a `Result` instance with this interface:
 
 ```
 /**
- * The result of validation calls.
+ * The result of validation and sanitation calls.
  */
 export class Result<E> {
     public message?:string
@@ -43,19 +60,27 @@ export class Result<E> {
 }
 ```
 
+## Build ValidatorTS
+From the project root run `npm run b`
+
+## Running unit tests
+
+Run the Jest Tests for ValidatorTS
+
+`npm t`
+
+## ValidatorTS Workspace    
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+
+## Generate Typedoc 
+
+`npm run doc`
+
+Typedoc will be contained in the `doc` folder of the root directory.
 
 
-Thus if there is an error the `value` property will be `undefined`, the `error` property will be set to the function used to generate the `message` and the `message` will be initialized as well.
-
-For the error handlling approach see the article [Typescript Exception Free Function Error Handling](https://developer.fireflysemantics.com/tasks/tasks--typescript--typescript-exception-free-error-handling).
-
-## Browse Typedoc
-
-The [Typedoc](https://fireflysemantics.github.io/validatorts/) contains documentation for all the validators and sanitizers.
-
-Clicking on a particular validator or sanitizer reveals the API and the types of errors that can occur when using the API.
-
-# Supported Package Formats
+## Supported Package Formats
 
 The library is built with the Angular Package Format.  It therefore supports all these package formats (As can be seen in the provided `package.json`) and has integrated typescript definitions:
 
@@ -67,25 +92,4 @@ The library is built with the Angular Package Format.  It therefore supports all
 -  "fesm5": "fesm5/fireflysemantics-validatorts.js",
 -  "fesm2015": "fesm2015/fireflysemantics-validatorts.js",
 -  "typings": "fireflysemantics-validatorts.d.ts",
-
-
-# ValidatorTS Workspace    
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
-
-
-## Build ValidatorTS
-From the project root run `npm run b`
-
-## Running unit tests
-
-Run the Jest Tests for ValidatorTS
-
-`npm t`
-
-## Generate Typedoc 
-
-`npm run doc-validatorts
-
-Typedoc will be contained in the `doc` folder of the root directory.
 
