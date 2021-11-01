@@ -62,7 +62,6 @@ export const IS_IP_ERRORS: IsIPErrors =
  */
 
  export function isIP(target:string, version:string=''):Result<boolean | undefined> {
-   console.log(`THE VERSION IS: ${version}`)
   if (!isString(target).value) {
     return new Result(
       undefined, 
@@ -82,9 +81,6 @@ export const IS_IP_ERRORS: IsIPErrors =
     return new Result(parts[3] <= 255);
   }
   if (version === '6') {
-    console.log("TRYING SIX")
-    console.log(`!!IPv6AddressRegExp.test(target): ${!!IPv6AddressRegExp.test(target)}`)
-
     return new Result(!!IPv6AddressRegExp.test(target));
   }
   return new Result(false);

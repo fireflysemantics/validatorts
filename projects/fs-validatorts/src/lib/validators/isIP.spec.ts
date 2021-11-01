@@ -2,6 +2,18 @@ import { TestData } from "../types/TestData";
 import { runtest } from "../util/test-util";
 import { isIP } from "./isIP"
 
+test('isIP', () => {
+    runtest(testdata, isIP)
+    //    expect(isIP('::ffff:127.0.0.1:').value).toBeTruthy()
+
+    testdata.forEach(t => {
+        t.valid.forEach(ip => {
+            if (!isIP(ip).value)
+                console.log(`valid ${ip}:  ${isIP(ip).value}`)
+        })
+    })
+})
+
 
 const testdata: TestData[] = [
     {
@@ -76,7 +88,7 @@ const testdata: TestData[] = [
     },
     {
         it: 'isIP',
-        args: [],
+        args: [4],
         valid: [
             '127.0.0.1',
             '0.0.0.0',
@@ -96,7 +108,7 @@ const testdata: TestData[] = [
     },
     {
         it: 'isIP',
-        args: [],
+        args: [6],
         valid: [
             '::1',
             '2001:db8:0000:1:1:1:1:1',
@@ -120,7 +132,7 @@ const testdata: TestData[] = [
     },
     {
         it: 'isIP',
-        args: [],
+        args: [10],
         valid: [],
         invalid: [
             '127.0.0.1',
@@ -133,25 +145,3 @@ const testdata: TestData[] = [
     }
 ]
 
-test('isIP', () => {
-//    expect(isIP('::ffff:127.0.0.1:').value).toBeTruthy()
-
-    testdata.forEach(t=>{
-        t.valid.forEach(ip=>{
-            if (!isIP(ip).value)
-            console.log(`valid ${ip}:  ${isIP(ip).value}`)
-        })
-    })
-
-  //  expect(isIP('127.0.0.1')).toBeTruthy()
-    runtest(testdata, isIP)
-/*
-    console.log("RUNNING TESTS")
-    testdata[0].valid.forEach(s=>{
-        if (!isIP(s)) {
-            console.log(`S IS: ${s}`)
-        }
-        console.log(`S IS: ${s} and isIP(s) is ${isIP(s).value}`)
-    })
-    */
-})

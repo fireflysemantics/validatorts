@@ -160,7 +160,7 @@ export function isEmail(target: string, options:IsEmailOptions = default_email_o
     const username = user.split('+')[0];
 
     // Dots are not included in gmail length restriction
-    if (!isByteLength(username.replace(/\./g, ''), { min: 6, max: 30 })) {
+    if (!isByteLength(username.replace(/\./g, ''), { min: 6, max: 30 }).value) {
       return new Result(false);
     }
 
@@ -173,25 +173,26 @@ export function isEmail(target: string, options:IsEmailOptions = default_email_o
   }
 
   if (options.ignore_max_length === false && (
-    !isByteLength(user, { max: 64 }) ||
-    !isByteLength(domain!, { max: 254 }))
+    !isByteLength(user, { max: 64 }).value ||
+    !isByteLength(domain!, { max: 254 }).value)
   ) {
     return new Result(false);
   }
 
-  if (!isFQDN(domain!, { require_tld: options.require_tld })) {
+  if (!isFQDN(domain!, { require_tld: options.require_tld }).value) {
+
     if (!options.allow_ip_domain) {
       return new Result(false);
     }
 
-    if (!isIP(domain!)) {
+    if (!isIP(domain!).value) {
       if (!domain!.startsWith('[') || !domain!.endsWith(']')) {
         return new Result(false);
       }
 
       let noBracketdomain = domain!.substr(1, domain!.length - 2);
 
-      if (noBracketdomain.length === 0 || !isIP(noBracketdomain)) {
+      if (noBracketdomain.length === 0 || !isIP(noBracketdomain).value) {
         return new Result(false);
       }
     }
@@ -199,6 +200,7 @@ export function isEmail(target: string, options:IsEmailOptions = default_email_o
 
   if (user[0] === '"') {
     user = user.slice(1, user.length - 1);
+
     return new Result(options.allow_utf8_local_part ?
       quotedEmailUserUtf8.test(user) :
       quotedEmailUser.test(user));

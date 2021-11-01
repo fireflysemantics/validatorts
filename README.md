@@ -17,7 +17,7 @@ npm i -S @fireflysemantics/validatorts tslib
 import { isPort } from '@fireflysemantics/validatorts';
 console.log(isPort('4200').value) //Logs true
 ```
-[Stackblitz](https://stackblitz.com/edit/typescript-ahxupq)
+[Stackblitz Playground](https://stackblitz.com/edit/typescript-ahxupq)
 
 ## Error Handling
 
