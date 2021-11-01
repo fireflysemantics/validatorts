@@ -58,6 +58,7 @@ export function isByteLength(target: string, options: IsByteLengthOptions = defa
       [target])
   }
   options = { ...default_byte_length_options, ...options }
+
   let min = options.min;
   let max = options.max;
 

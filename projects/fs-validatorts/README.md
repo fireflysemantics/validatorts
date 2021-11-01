@@ -5,6 +5,10 @@ A typescript library of [validators and sanitizers](https://fireflysemantics.git
 
 [![Build Status](https://travis-ci.org/fireflysemantics/validatorts.svg?branch=master)](https://travis-ci.org/fireflysemantics/validatorts)
 
+## Typedoc
+
+The [Typedoc](https://fireflysemantics.github.io/validatorts/) contains documentation for all the `validators` and `sanitizers`.
+
 ## Install
 
 ```
@@ -34,9 +38,6 @@ To see what types of errors can occur see the [Typedoc](https://fireflysemantics
 
 For more details on the error handling design and approach see [Typescript Exception Free Function Error Handling](https://developer.fireflysemantics.com/tasks/tasks--typescript--typescript-exception-free-error-handling).
 
-## Typedoc
-
-The [Typedoc](https://fireflysemantics.github.io/validatorts/) contains documentation for all the `validators` and `sanitizers`.
 
 ### Result API
 
