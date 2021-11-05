@@ -1,6 +1,7 @@
 /*
  * Public API Surface of validatorjs
  */
+export * from './lib/validators/isBoolean'
 export * from './lib/validators/isSameInstant'
 export * from './lib/validators/isInObjectValues'
 export * from './lib/validators/isInObjectKeys'

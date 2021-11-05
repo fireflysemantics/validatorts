@@ -25,7 +25,7 @@ const numericNoSymbols = /^[0-9]+$/;
  * @param target The target
  * @param options The options
  */
-export function isNumeric(target:string, options:any):Result<boolean|undefined>  {
+export function isNumeric(target:string, options?:any):Result<boolean|undefined>  {
   if (!isString(target).value) {
     return new Result(
       undefined, 
