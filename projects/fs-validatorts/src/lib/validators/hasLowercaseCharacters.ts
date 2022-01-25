@@ -14,10 +14,8 @@ export const HAS_LOWERCASE_CHARACTERS_ERRORS: HasLowerCaseCharactersErrors =
 
 /**
  * Check if at least min lowercase 
- * characters appearing  
+ * characters appear 
  * anywhere in the string`target`
- * has min characters 
- * anywhere in the string.
  *   
  * ### Example
  * ```

@@ -13,16 +13,14 @@ export const HAS_UPPERCASE_CHARACTERS_ERRORS: HasUpperCaseCharactersErrors =
 };
 
 /**
- * Check if at least min lowercase 
- * characters appearing  
+ * Check if at least min uppercase
+ * characters appear
  * anywhere in the string`target`
- * has min characters 
- * anywhere in the string.
  *   
  * ### Example
  * ```
  * expect(hasNumericCharacters('a2', 2).value).toBeFalsy()
- * expect(hasNumericCharacters('a2a2', 2).value).toBeTruthy()
+ * expect(hasNumericCharacters('A2B2', 2).value).toBeTruthy()
  * ```
  * @param target The target
  */

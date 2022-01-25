@@ -13,16 +13,14 @@ export const HAS_SPECIAL_CHARACTERS_ERRORS: HasSpecialCharactersErrors =
 };
 
 /**
- * Check if at least min lowercase 
- * characters appearing  
- * anywhere in the string`target`
- * has min characters 
- * anywhere in the string.
+ * Check if at least min special
+ * characters appear anywhere in 
+ * the string`target`
  *   
  * ### Example
  * ```
  * expect(hasNumericCharacters('a2', 2).value).toBeFalsy()
- * expect(hasNumericCharacters('a2a2', 2).value).toBeTruthy()
+ * expect(hasNumericCharacters('#a2a2@', 2).value).toBeTruthy()
  * ```
  * @param target The target
  */

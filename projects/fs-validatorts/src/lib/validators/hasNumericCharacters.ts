@@ -15,10 +15,7 @@ export const HAS_NUMERIC_CHARACTERS_ERRORS: HasNumericCharactersErrors =
 
 /**
  * Check if at least min digit characters 
- * appearing  
- * anywhere in the string`target`
- * has min characters 
- * anywhere in the string.
+ * appear anywhere in the string`target`
  *   
  * ### Example
  * ```

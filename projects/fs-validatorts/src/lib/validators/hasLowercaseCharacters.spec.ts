@@ -1,6 +1,6 @@
 import { TestData } from '../types/TestData'
 import { runtest } from '../util/test-util'
-import { hasLowerCaseCharacters } from './hasLowercaseCharacters'
+import { hasLowerCaseCharacters } from './hasLowerCaseCharacters'
 
 test('hasLowercaseCharacters', () => {
     runtest(testdata, hasLowerCaseCharacters)
