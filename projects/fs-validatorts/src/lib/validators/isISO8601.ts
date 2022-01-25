@@ -58,7 +58,7 @@ const isValidDate = (str:string) => {
  * @param target The target string
  * @param options The options
  */
-export function isISO8601(target:string, options?:any):Result<boolean|undefined>  {
+export function isISO8601(target:string, options:any = {}):Result<boolean|undefined>  {
   if (!isString(target).value) {
     return new Result(
       undefined, 

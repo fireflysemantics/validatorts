@@ -1,4 +1,4 @@
-import { isInt } from './isInt';
+import { isIntString } from './isIntString';
 import { MessageFunctionType, Result } from '../types';
 import { isString } from './isString';
 
@@ -35,5 +35,5 @@ export function isPort(target:string):Result<boolean|undefined>  {
       IS_PORT_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
       [target])
   }
-  return isInt(target, { min: 0, max: 65535 });
+  return isIntString(target, { min: 0, max: 65535 });
 }
