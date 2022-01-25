@@ -1,9 +1,9 @@
 import { TestData } from '../types/TestData'
 import { runtest } from '../util/test-util'
-import { hasLowercaseCharacters } from './hasLowercaseCharacters'
+import { hasLowerCaseCharacters } from './hasLowercaseCharacters'
 
 test('hasLowercaseCharacters', () => {
-    runtest(testdata, hasLowercaseCharacters)
+    runtest(testdata, hasLowerCaseCharacters)
 })
 const testdata: TestData[] = [
     {
