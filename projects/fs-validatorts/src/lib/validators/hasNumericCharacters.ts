@@ -25,12 +25,15 @@ export const HAS_NUMERIC_CHARACTERS_ERRORS: HasNumericCharactersErrors =
  * @param target The target
  */
 export function hasNumericCharacters(target:string, min:number):Result<boolean|undefined>  {
-  const regex: RegExp = new RegExp(`([a-z][0-9]){${min},}`);
   if (!isString(target).value) {
     return new Result(
       undefined, 
       HAS_NUMERIC_CHARACTERS_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
       [target])
   }
-  return new Result((regex.test(target)));
+  //===========================================
+  // Strip the non numeric characters 
+  //===========================================
+  const stripped = target.replace(/\D+/g, "")
+  return stripped.length >= min ? new Result(true) : new Result(false) 
 }

@@ -1,6 +1,10 @@
 /*
  * Public API Surface of validatorjs
  */
+export * from './lib/validators/hasLowerCaseCharacters'
+export * from './lib/validators/hasUpperCaseCharacters'
+export * from './lib/validators/hasSpecialCharacters'
+export * from './lib/validators/hasNumericCharacters'
 export * from './lib/validators/isBoolean'
 export * from './lib/validators/isSameInstant'
 export * from './lib/validators/isInObjectValues'

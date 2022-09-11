@@ -32,5 +32,9 @@ export function hasLowerCaseCharacters(target:string, min:number):Result<boolean
       HAS_LOWERCASE_CHARACTERS_ERRORS.TARGET_ARGUMENT_NOT_A_STRING,
       [target])
   }
-  return new Result((regex.test(target)));
+  //===========================================
+  // Strip the non lowercase characters 
+  //===========================================
+  const result = target.replace(/[^a-z]+/g, "").length >= min
+  return new Result(result);
 }

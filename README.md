@@ -20,8 +20,11 @@ npm i -S @fireflysemantics/validatorts tslib
 ```
 import { isPort } from '@fireflysemantics/validatorts';
 console.log(isPort('4200').value) //Logs true
+console.log(isPort('70000').value); //Logs false
+console.log(isPort('4200').error); //Logs undefined
 ```
-[Stackblitz Playground](https://stackblitz.com/edit/typescript-ahxupq)
+
+[Stackblitz Playground](https://stackblitz.com/edit/typescript-ezqnqa?file=index.ts)
 
 ## Error Handling
 
@@ -30,7 +33,7 @@ In the event of an error the `Result.value` property will be `undefined` and bot
 ```
 if (isPort(4200).error) {
   console.log(isPort(4200).value); //Logs undefined
-  console.log(isPort(4200).message); //The error message
+  console.log(isPort(4200).message);  //The target argument 4200 is not a string.
 }
 ```
 

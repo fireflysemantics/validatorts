@@ -9,6 +9,6 @@ const testdata: TestData[] = [
     {
         it: 'should test hasLowercaseCharacters',
         args: [2],
-        valid: ['a2a2'],
+        valid: ['ss', 'a2a2'],
         invalid: ['a2']
     }]

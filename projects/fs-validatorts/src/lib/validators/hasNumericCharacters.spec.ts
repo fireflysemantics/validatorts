@@ -9,6 +9,6 @@ const testdata: TestData[] = [
     {
         it: 'should test hasNumericCharacters',
         args: [2],
-        valid: ['a2a2'],
-        invalid: ['a2']
+        valid: [ '22', 'a2a2'],
+        invalid: ['1', 'a2']
     }]
