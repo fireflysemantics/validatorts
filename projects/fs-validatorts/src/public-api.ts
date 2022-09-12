@@ -2,7 +2,6 @@
  * Public API Surface of fs-validatorts
  */
 export * from './lib/utilities/url/urlFragment'
-export * from './lib/utilities/url/urlPath'
 
 /*
  * Public API Surface of validatorjs
