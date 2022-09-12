@@ -1,0 +1,38 @@
+{
+  "name": "@fireflysemantics/validatorts",
+  "description": "Data Validation and Sanitization",
+  "version": "13.0.85",
+  "homepage": "https://github.com/fireflysemantics/validatorts",
+  "keywords": [
+    "validator",
+    "validation",
+    "validate",
+    "sanitization",
+    "sanitize",
+    "sanitisation",
+    "sanitise",
+    "assert"
+  ],
+  "bugs": {
+    "url": "https://github.com/fireflysemantics/validatorts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fireflysemantics/validatorts"
+  },
+  "license": "MIT",
+  "comments": {
+    "global dependencies": {
+      "@jsdevtools/version-bump-prompt global install": "npm install -g @jsdevtools/version-bump-prompt",
+      "npm-check-updates": "npm install -g npm-check-updates",
+      "npm-install-peers": "npm install -g npm-install-peers"
+    },
+    "validatorjs bugs": {
+      "url": "https://github.com/chriso/validator.js/issues"
+    },
+    "validatorjs repository": {
+      "type": "git",
+      "url": "https://github.com/chriso/validator.js.git"
+    }
+  }
+}
