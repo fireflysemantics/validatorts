@@ -1,4 +1,4 @@
-import { merge } from '../util/merge';
+import { merge } from '../utilities/merge';
 import { MessageFunctionType, Result } from '../types';
 
 export interface NormalizeEmailErrors {

@@ -1,12 +1,12 @@
 import { MessageFunctionType, Result } from '../types';
 import { isString } from './isString';
 
-export interface IsURLPathsEqualErrors {
+export interface IsURLPathEqualErrors {
   URL_ARGUMENT_NOT_A_STRING: MessageFunctionType;
   PATH_ARGUMENT_NOT_A_STRING: MessageFunctionType;
 }
 
-export const IS_URL_PATH_EQUAL_ERRORS: IsURLPathsEqualErrors = {
+export const IS_URL_PATH_EQUAL_ERRORS: IsURLPathEqualErrors = {
   URL_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
     return `The URL argument ${arr![0]} is not a string.`;
   },
@@ -25,12 +25,12 @@ export const IS_URL_PATH_EQUAL_ERRORS: IsURLPathsEqualErrors = {
  *
  * ### Example
  * ```
- * expect(isURLPathsEqual(urlA, "/aa/bb/").value).toBeTruthy();
+ * expect(isURLPathEqual(urlA, "/aa/bb/").value).toBeTruthy();
  * ```
- * @param target The target string
- * @param whitelist The white list
+ * @param url The url string
+ * @param path The path string
  */
-export function isURLPathsEqual(
+export function isURLPathEqual(
   url: string,
   path: string
 ): Result<boolean | undefined> {

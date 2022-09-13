@@ -1,7 +1,7 @@
 {
   "name": "@fireflysemantics/validatorts",
   "description": "Data Validation and Sanitization",
-  "version": "13.0.87",
+  "version": "13.0.89",
   "homepage": "https://github.com/fireflysemantics/validatorts",
   "keywords": [
     "validator",
