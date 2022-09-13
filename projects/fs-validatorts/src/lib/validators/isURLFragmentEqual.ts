@@ -6,7 +6,7 @@ export interface IsURLFragmentEqualErrors {
   FRAGMENT_ARGUMENT_NOT_A_STRING: MessageFunctionType;
 }
 
-export const IS_URL_PATH_EQUAL_ERRORS: IsURLFragmentEqualErrors = {
+export const IS_URL_FRAGMENT_EQUAL_ERRORS: IsURLFragmentEqualErrors = {
   URL_ARGUMENT_NOT_A_STRING: (arr?: string[]) => {
     return `The URL argument ${arr![0]} is not a string.`;
   },
@@ -37,14 +37,14 @@ export function isURLFragmentEqual(
   if (!isString(url).value) {
     return new Result(
       undefined,
-      IS_URL_PATH_EQUAL_ERRORS.URL_ARGUMENT_NOT_A_STRING,
+      IS_URL_FRAGMENT_EQUAL_ERRORS.URL_ARGUMENT_NOT_A_STRING,
       [url]
     );
   }
   if (!isString(fragment).value) {
     return new Result(
       undefined,
-      IS_URL_PATH_EQUAL_ERRORS.FRAGMENT_ARGUMENT_NOT_A_STRING,
+      IS_URL_FRAGMENT_EQUAL_ERRORS.FRAGMENT_ARGUMENT_NOT_A_STRING,
       [fragment]
     );
   }

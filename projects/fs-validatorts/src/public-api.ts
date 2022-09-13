@@ -106,7 +106,13 @@ export * from './lib/validators/isSlug'
 export * from './lib/validators/isString'
 export * from './lib/validators/isSurrogatePair'
 export * from './lib/validators/isUppercase'
+
 export * from './lib/validators/isURL'
+export * from './lib/validators/isURLFragmentContained'
+export * from './lib/validators/isURLPathContained'
+export * from './lib/validators/isURLPathEqual'
+export * from './lib/validators/isURLFragmentEqual'
+
 export * from './lib/validators/isUUID'
 export * from './lib/validators/isVariableWidth'
 export * from './lib/validators/isWhitelisted'
