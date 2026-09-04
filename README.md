@@ -5,6 +5,10 @@ A typescript library of [validators and sanitizers](https://fireflysemantics.git
 
 [![Build Status](https://travis-ci.org/fireflysemantics/validatorts.svg?branch=master)](https://travis-ci.org/fireflysemantics/validatorts)
 
+## Credit
+
+This project is a TypeScript rewrite based on the original [validator.js](https://github.com/validatorjs/validator.js) package, published on npm as [validator](https://www.npmjs.com/package/validator). The original package, its API, and its documentation remain the canonical reference.
+
 ## Typedoc
 
 The [Typedoc](https://fireflysemantics.github.io/validatorts/) contains documentation for all the `validators` and `sanitizers`.
@@ -22,6 +26,18 @@ import { isPort } from '@fireflysemantics/validatorts';
 console.log(isPort('4200').value) //Logs true
 console.log(isPort('70000').value); //Logs false
 console.log(isPort('4200').error); //Logs undefined
+```
+
+## Usage examples
+
+```
+// Validators
+import { isEmail } from '@fireflysemantics/validatorts';
+console.log(isEmail('test@example.com').value); // Logs true
+
+// Sanitizers
+import { escape } from '@fireflysemantics/validatorts';
+console.log(escape('<b>').value); // Logs &lt;b&gt;
 ```
 
 [Stackblitz Playground](https://stackblitz.com/edit/typescript-ezqnqa?file=index.ts)
